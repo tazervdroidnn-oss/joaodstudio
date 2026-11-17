@@ -30,3 +30,20 @@ Conversas anteriores (outra conta) não ficaram registradas em arquivo. Se houve
 - npm.cmd run build na feat/secao-responsiva: passou sem erros (Next.js 15.5.29, rota / com 53.6 kB).
 - Arquivos de memória commitados na feat/secao-responsiva.
 - feat/secao-responsiva mesclada na main (fast-forward) e enviada ao GitHub, disparando o deploy de produção na Vercel.
+
+
+## 17/11/2026 — commit 8c0363a (branch feat/hero-retrato-capturas, NÃO está na main)
+feat: hero com retrato, capturas reais nos projetos e na secao responsiva, metadados OG e favicon
+- Trabalho encontrado sem commit e sem registro no disco (feito na sessão anterior, 01:31 a 01:41); recuperado e commitado sem alterar o código.
+- Hero: Intro "JOÃO D" removida; retrato do João com halo, anel e chips; inclinação com o mouse e entrada mais rápida (Motion.js).
+- Nav e Footer (CTA): avatar joao-d-256.jpg.
+- layout.js: metadados Open Graph e Twitter, metadataBase e themeColor. Favicon em app/icon.jpg.
+- Projects: mockups em código trocados por capturas reais (public/sites/<id>-laptop.jpg).
+- Responsive: celular, tablet e notebook mostram capturas reais (1440, 820 e 390 px); removidos SiteView e ResizeObserver; pré-carregamento ao passar o mouse nas abas.
+- Imagens novas: public/joao-d.jpg, public/joao-d-256.jpg e 12 capturas em public/sites/.
+- npm.cmd run build: passou sem erros (Next.js 15.5.29, rota / com 51,8 kB).
+- Status: só local. Sem push e sem merge na main (main segue em cea08e9, igual ao origin/main).
+
+## 17/11/2026 — nova sessão (retomada pelo roteiro de CONTEXTO_PROJETO.md)
+- Lidos os três arquivos de memória; git status mostrou 9 arquivos modificados e itens novos sem commit.
+- Branch feat/hero-retrato-capturas criada a partir da main (cea08e9). Memória atualizada.
