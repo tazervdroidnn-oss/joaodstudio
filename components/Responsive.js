@@ -9,84 +9,21 @@ import { WA_LINK } from "./config";
 gsap.registerPlugin(ScrollTrigger);
 
 /*
-  Identidade visual de cada projeto.
-  - Brasa Fish: cores e fonte lidas do código do próprio site (#111211, #f05a25, Montserrat).
-  - Demais: paleta e textos já validados na seção Projetos.
-  Nenhum preço é exibido aqui, para não divulgar valores desatualizados.
+  Cada aparelho mostra uma captura REAL do site, feita na largura do aparelho
+  (1440 / 820 / 390 px), em /public/sites/<id>-<laptop|tablet|phone>.jpg.
+  "glow" e "tabtx" só definem a cor do brilho e da aba de cada projeto.
 */
 const SITES = [
-  {
-    id: "brasa", tab: "Brasa Fish", host: "brasafish.com.br", href: "https://www.brasafish.com.br/",
-    brand: "BRASA FISH", links: ["Nossa história", "Day Use", "Frota", "Reservas"],
-    eyebrow: "LAGO DO MANSO · MT", hero: ["NÃO É SÓ PESCARIA", "É HISTÓRIA"],
-    lead: "Embarcações equipadas e experiências reais no Lago do Manso, em Mato Grosso.",
-    cta: "Quero viver essa experiência", ctaShort: "Reservar",
-    cards: [["Guia", "Incluso"], ["Combustível", "Incluso"], ["Almoço", "Incluso"], ["Tábua de frios", "Por embarcação"]],
-    band: "Day Use no Lago do Manso, das 07h às 17h.", foot: "Pesca esportiva de pescador para pescador",
-    vars: {
-      "--s-bg": "#111211", "--s-tx": "#f5f3ef", "--s-mut": "rgba(245,243,239,.66)", "--s-card": "#222a24", "--s-cardtx": "#f5f3ef",
-      "--s-bd": "rgba(245,243,239,.12)", "--s-ac": "#f05a25", "--s-actx": "#ffffff", "--s-btn": "#f05a25", "--s-hbtn": "#f05a25",
-      "--s-hbtntx": "#ffffff", "--s-hero": "#111211", "--s-herotx": "#f5f3ef", "--s-eb": "#f05a25", "--s-ring": "#f05a25",
-      "--s-art": "radial-gradient(circle at 68% 32%,rgba(240,90,37,.55),transparent 55%),linear-gradient(160deg,#222a24,#101512)",
-      "--s-font": "var(--font-montserrat),Arial,sans-serif", "--s-up": "uppercase", "--s-glow": "#f05a25", "--s-tabtx": "#ffffff",
-    },
-  },
-  {
-    id: "meteoro", tab: "Meteoro Joias", host: "meteorojoias.com.br", href: "https://www.meteorojoias.com.br/",
-    brand: "METEORO", links: ["Vitrine", "Alianças", "Coleções", "Contato"],
-    eyebrow: "JOIAS & ACESSÓRIOS", hero: ["SUA PRESENÇA.", "SUA ASSINATURA."],
-    lead: "Alianças, anéis, correntes e colares com atendimento pelo WhatsApp.",
-    cta: "Explorar a vitrine", ctaShort: "Vitrine",
-    cards: [["Anel Soberano", "Noir"], ["Alianças", "Laço"], ["Corrente", "Cruz"], ["Colar", "Asas"]],
-    band: "Vitrine com filtros por categoria e pedido direto pelo WhatsApp.", foot: "Joias & Acessórios",
-    vars: {
-      "--s-bg": "#121212", "--s-tx": "#f3e6c4", "--s-mut": "rgba(243,230,196,.66)", "--s-card": "#1d1d1d", "--s-cardtx": "#f3e6c4",
-      "--s-bd": "#3a3220", "--s-ac": "#d4af37", "--s-actx": "#111111", "--s-btn": "linear-gradient(120deg,#c9a227,#f3d97a)",
-      "--s-hbtn": "linear-gradient(120deg,#c9a227,#f3d97a)", "--s-hbtntx": "#111111", "--s-hero": "#121212", "--s-herotx": "#f3e6c4",
-      "--s-eb": "#d4af37", "--s-ring": "#d4af37",
-      "--s-art": "radial-gradient(circle at 50% 46%,rgba(212,175,55,.5),transparent 52%),linear-gradient(160deg,#1d1d1d,#0c0c0c)",
-      "--s-font": "var(--font-sora),Inter,sans-serif", "--s-up": "uppercase", "--s-glow": "#d4af37", "--s-tabtx": "#111111",
-    },
-  },
-  {
-    id: "valentim", tab: "Balneário Valentim", host: "balneariovalentimm.com.br", href: "https://www.balneariovalentimm.com.br/",
-    brand: "BALNEÁRIO VALENTIM", links: ["Início", "Valores", "Avaliações", "Como chegar"],
-    eyebrow: "AÇAILÂNDIA · MA", hero: ["Seu refúgio perfeito", "em meio à natureza."],
-    lead: "Águas cristalinas em Açailândia, no Maranhão.",
-    cta: "Planejar minha visita", ctaShort: "Visitar",
-    cards: [["Passar o dia", "Day use"], ["Camping", "Estrutura"], ["Restaurante", "No local"], ["Como chegar", "Mapa"]],
-    band: "Avaliações do Google, vídeos e mapa para você planejar a visita.", foot: "Turismo e natureza no Maranhão",
-    vars: {
-      "--s-bg": "#e9fbf5", "--s-tx": "#0b3d33", "--s-mut": "rgba(11,61,51,.68)", "--s-card": "#ffffff", "--s-cardtx": "#0b6e63",
-      "--s-bd": "rgba(11,110,99,.18)", "--s-ac": "#0b6e63", "--s-actx": "#ffffff", "--s-btn": "#0b6e63", "--s-hbtn": "#ffffff",
-      "--s-hbtntx": "#0b6e63", "--s-hero": "linear-gradient(160deg,#0fa28a,#0b6e63 60%,#064c46)", "--s-herotx": "#ffffff",
-      "--s-eb": "rgba(255,255,255,.85)", "--s-ring": "rgba(255,255,255,.7)",
-      "--s-art": "radial-gradient(circle at 60% 40%,rgba(255,255,255,.35),transparent 55%),linear-gradient(160deg,#0b6e63,#064c46)",
-      "--s-font": "var(--font-sora),Inter,sans-serif", "--s-up": "none", "--s-glow": "#0fa28a", "--s-tabtx": "#ffffff",
-    },
-  },
-  {
-    id: "nasa", tab: "Eletricista da NASA", host: "eletricadanasa.vercel.app", href: "https://eletricadanasa.vercel.app/",
-    brand: "ELETRICISTA DA NASA", links: ["Biblioteca", "Como funciona", "Minha biblioteca"],
-    eyebrow: "AUTOELÉTRICA", hero: ["CONHECIMENTO TÉCNICO", "PARA IR MAIS LONGE."],
-    lead: "Biblioteca digital de esquemas elétricos e diagramas de autoelétrica.",
-    cta: "Explorar a biblioteca", ctaShort: "Biblioteca",
-    cards: [["Catálogo", "Por montadora"], ["Prévia", "Dos materiais"], ["Pagamento", "Via Pix"], ["Acervo", "Minha biblioteca"]],
-    band: "Catálogo por montadora, filtros e compra por Pix.", foot: "Esquemas e diagramas para a autoelétrica",
-    vars: {
-      "--s-bg": "#071d4a", "--s-tx": "#ffffff", "--s-mut": "rgba(255,255,255,.7)", "--s-card": "rgba(43,140,255,.15)", "--s-cardtx": "#ffffff",
-      "--s-bd": "rgba(43,140,255,.4)", "--s-ac": "#2b8cff", "--s-actx": "#ffffff", "--s-btn": "#2b8cff", "--s-hbtn": "#2b8cff",
-      "--s-hbtntx": "#ffffff", "--s-hero": "#071d4a", "--s-herotx": "#ffffff", "--s-eb": "#6db3ff", "--s-ring": "#6db3ff",
-      "--s-art": "radial-gradient(circle at 62% 38%,rgba(43,140,255,.55),transparent 55%),linear-gradient(160deg,#12408f,#092b68)",
-      "--s-font": "var(--font-sora),Inter,sans-serif", "--s-up": "uppercase", "--s-glow": "#2b8cff", "--s-tabtx": "#ffffff",
-    },
-  },
+  { id: "brasa", tab: "Brasa Fish", host: "brasafish.com.br", href: "https://www.brasafish.com.br/", glow: "#f05a25", tabtx: "#ffffff" },
+  { id: "meteoro", tab: "Meteoro Joias", host: "meteorojoias.com.br", href: "https://www.meteorojoias.com.br/", glow: "#d4af37", tabtx: "#111111" },
+  { id: "valentim", tab: "Balneário Valentim", host: "balneariovalentimm.com.br", href: "https://www.balneariovalentimm.com.br/", glow: "#0fa28a", tabtx: "#ffffff" },
+  { id: "nasa", tab: "Eletricista da NASA", host: "eletricadanasa.vercel.app", href: "https://eletricadanasa.vercel.app/", glow: "#2b8cff", tabtx: "#ffffff" },
 ];
 
 const DEVICES = [
-  { key: "laptop", vw: 1440, label: "Desktop", px: "1440 px" },
-  { key: "tablet", vw: 820, label: "Tablet", px: "820 px" },
-  { key: "phone", vw: 390, label: "Mobile", px: "390 px" },
+  { key: "laptop", label: "Desktop", px: "1440 px" },
+  { key: "tablet", label: "Tablet", px: "820 px" },
+  { key: "phone", label: "Mobile", px: "390 px" },
 ];
 
 const STEPS = [
@@ -95,35 +32,9 @@ const STEPS = [
   ["03", "Desktop · 1440 px", "Ocupa a tela inteira.", "Composição em colunas, hierarquia clara e o mesmo caminho até o contato: título, prova e ação."],
 ];
 
-function SiteView({ s }) {
-  return (
-    <>
-      <div className="rs-site">
-        <header className="rs-nav">
-          <b className="rs-brand">{s.brand}</b>
-          <nav className="rs-links">{s.links.map((l) => <span key={l}>{l}</span>)}</nav>
-          <span className="rs-navcta">{s.ctaShort}</span>
-          <span className="rs-burger"><i /><i /><i /></span>
-        </header>
-        <section className="rs-hero">
-          <div>
-            <small className="rs-eyebrow">{s.eyebrow}</small>
-            <h4>{s.hero[0]}<br />{s.hero[1]}</h4>
-            <p>{s.lead}</p>
-            <span className="rs-btn">{s.cta}</span>
-          </div>
-          <div className="rs-art" />
-        </section>
-        <section className="rs-cards">
-          {s.cards.map(([t, d]) => <div key={t}><b>{t}</b><span>{d}</span></div>)}
-        </section>
-        <section className="rs-band"><p>{s.band}</p></section>
-        <footer className="rs-foot">{s.brand} · {s.foot}</footer>
-      </div>
-      <span className="rs-wa"><WaIcon className="h-full w-full" /></span>
-    </>
-  );
-}
+const preload = (id) => {
+  DEVICES.forEach((d) => { const i = new Image(); i.src = `/sites/${id}-${d.key}.jpg`; });
+};
 
 function Device({ d, s }) {
   return (
@@ -133,8 +44,12 @@ function Device({ d, s }) {
         <div className="rs-frame">
           <div className="rs-bz">
             {d.key === "laptop" && <div className="rs-bar"><u /><u /><u /><em>{s.host}</em></div>}
-            <div className="rs-fit" data-vw={d.vw} style={{ "--vw": d.vw }}>
-              <div className="rs-vp" key={s.id}><SiteView s={s} /></div>
+            <div className="rs-fit">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                key={`${s.id}-${d.key}`} className="rs-shot" src={`/sites/${s.id}-${d.key}.jpg`}
+                alt="" loading="lazy" decoding="async" draggable="false"
+              />
             </div>
           </div>
         </div>
@@ -152,19 +67,6 @@ export default function Responsive() {
   useEffect(() => {
     const el = root.current;
     if (!el) return;
-
-    // Escala cada tela virtual (390 / 820 / 1440 px) para caber no aparelho, mantendo as quebras reais do layout.
-    const fits = [...el.querySelectorAll(".rs-fit")];
-    const fit = (f) => {
-      const k = f.clientWidth / Number(f.dataset.vw);
-      if (!k) return;
-      f.style.setProperty("--k", k);
-      f.style.setProperty("--vh", f.clientHeight / k + "px");
-      f.classList.add("on");
-    };
-    const ro = new ResizeObserver(() => fits.forEach(fit));
-    fits.forEach((f) => { ro.observe(f); fit(f); });
-
     const mm = gsap.matchMedia();
 
     // Desktop: cena fixa na tela, os aparelhos entram conforme a rolagem.
@@ -208,7 +110,7 @@ export default function Responsive() {
       });
     });
 
-    return () => { ro.disconnect(); mm.revert(); };
+    return () => mm.revert();
   }, []);
 
   return (
@@ -218,8 +120,8 @@ export default function Responsive() {
           <span className="rs-pill rv">● Responsividade de verdade</span>
           <h2 className="h2 rv">Uma página. <span className="g">Todas as telas.</span></h2>
           <p className="sub rv" style={{ marginBottom: 0 }}>
-            Você acabou de ver os projetos no ar. Agora veja o que acontece por trás: cada página nasce pensada para o celular,
-            ganha espaço no tablet e se recompõe no notebook, sem perder a identidade da marca.
+            Você acabou de ver os projetos no ar. Agora veja os mesmos sites em três tamanhos de tela: cada página nasce pensada para o
+            celular, ganha espaço no tablet e se recompõe no notebook, sem perder a identidade da marca.
           </p>
         </div>
 
@@ -238,13 +140,14 @@ export default function Responsive() {
             <div className="rs-prog" aria-hidden="true"><i /></div>
 
             <div className="rs-tabs-wrap">
-              <small>Veja com a identidade de cada projeto</small>
+              <small>Veja cada projeto em três telas</small>
               <div className="rs-tabs" role="tablist" aria-label="Projetos">
                 {SITES.map((x) => (
                   <button
                     key={x.id} type="button" role="tab" aria-selected={x.id === id}
                     className={x.id === id ? "on" : ""} onClick={() => setId(x.id)}
-                    style={{ "--tc": x.vars["--s-glow"], "--tcx": x.vars["--s-tabtx"] }}
+                    onPointerEnter={() => preload(x.id)} onFocus={() => preload(x.id)}
+                    style={{ "--tc": x.glow, "--tcx": x.tabtx }}
                   >
                     {x.tab}
                   </button>
@@ -254,7 +157,7 @@ export default function Responsive() {
             </div>
           </div>
 
-          <div className="rs-stage" role="img" aria-label={`Mockups de celular, tablet e notebook exibindo o site ${s.tab}`} style={s.vars}>
+          <div className="rs-stage" role="img" aria-label={`Capturas reais do site ${s.tab} em celular, tablet e notebook`} style={{ "--s-glow": s.glow }}>
             <div className="rs-glow" />
             {DEVICES.map((d) => <Device key={d.key} d={d} s={s} />)}
           </div>
@@ -270,7 +173,7 @@ export default function Responsive() {
             <a href="#servicos" className="btn btn-o">Por que isso importa</a>
           </div>
           <small>
-            Representação ilustrativa montada com a identidade visual de cada projeto. Os sites reais estão na seção <a href="#projetos">Projetos</a>.
+            Capturas reais dos sites, feitas em cada largura de tela. Os sites completos estão na seção <a href="#projetos">Projetos</a>.
           </small>
         </div>
       </div>

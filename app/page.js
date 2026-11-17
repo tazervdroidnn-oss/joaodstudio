@@ -1,5 +1,5 @@
 import Nav from "@/components/Nav";
-import Hero, { Intro } from "@/components/Hero";
+import Hero from "@/components/Hero";
 import Numbers from "@/components/Numbers";
 import Projects from "@/components/Projects";
 import Responsive from "@/components/Responsive";
@@ -11,7 +11,6 @@ import Motion from "@/components/Motion";
 export default function Home() {
   return (
     <main>
-      <Intro />
       <Nav />
       <Hero />
       <Numbers />
