@@ -47,3 +47,9 @@ feat: hero com retrato, capturas reais nos projetos e na secao responsiva, metad
 ## 17/11/2026 — nova sessão (retomada pelo roteiro de CONTEXTO_PROJETO.md)
 - Lidos os três arquivos de memória; git status mostrou 9 arquivos modificados e itens novos sem commit.
 - Branch feat/hero-retrato-capturas criada a partir da main (cea08e9). Memória atualizada.
+
+## 17/11/2026 — publicação do hero com retrato e capturas reais (autorizada pelo João)
+- A branch feat/hero-retrato-capturas foi enviada ao GitHub; a Vercel gerou a prévia e o João a conferiu e aprovou.
+- Merge na main em fast-forward (cea08e9 → 36427a8), com os commits 8c0363a e 36427a8. As entradas acima que dizem "só local" ou "fora da main" ficaram superadas por esta.
+- npm.cmd run build na main: passou sem erros (Next.js 15.5.29, rota / com 51,8 kB).
+- Push da main enviado ao GitHub, disparando o deploy de produção na Vercel.

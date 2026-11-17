@@ -22,15 +22,15 @@ Next.js 15 (App Router), React 19, Tailwind CSS 3.4, GSAP 3 (ScrollTrigger). Jav
 
 ## Estrutura do código
 - app/layout.js: fontes Sora, Inter, Montserrat; metadata pt-BR
-- app/page.js: ordem das seções (na branch feat/hero-retrato-capturas a Intro "JOÃO D" foi removida): Nav, Hero, Numbers, Projects, Responsive, Services, Process, Cta, Footer, Motion
+- app/page.js: ordem das seções (a Intro "JOÃO D" foi removida): Nav, Hero, Numbers, Projects, Responsive, Services, Process, Cta, Footer, Motion
 - app/globals.css: estilos globais, variáveis CSS (--bg, --v...), keyframes
-- components/: Nav, Hero (com retrato do João; a Intro foi removida na branch feat/hero-retrato-capturas), Numbers, Projects, Responsive, Services, Process, Footer (com Cta), Motion, WaIcon, config
+- components/: Nav, Hero (com retrato do João; sem Intro), Numbers, Projects, Responsive, Services, Process, Footer (com Cta), Motion, WaIcon, config
 - components/config.js: WA_LINK (WhatsApp) e INSTAGRAM
-- Imagens (branch feat/hero-retrato-capturas): public/joao-d.jpg (retrato, também usado no Open Graph), public/joao-d-256.jpg (avatar na Nav e no CTA), public/sites/<id>-<laptop|tablet|phone>.jpg (capturas reais dos 4 projetos) e app/icon.jpg (favicon).
+- Imagens: public/joao-d.jpg (retrato, também usado no Open Graph), public/joao-d-256.jpg (avatar na Nav e no CTA), public/sites/<id>-<laptop|tablet|phone>.jpg (capturas reais dos 4 projetos) e app/icon.jpg (favicon).
 
 ## Animações (GSAP)
 - Motion.js: entrada do hero (sem Intro), retrato que inclina com o mouse, parallax, reveal ao rolar (classe .rv), contador e gráfico em #numeros, orbes que seguem o mouse. Respeita prefers-reduced-motion.
-- Responsive.js: cena fixa (pin) no desktop com celular 390px, tablet 820px e notebook 1440px entrando pela rolagem; no mobile/tablet entram em sequência. Na branch feat/hero-retrato-capturas cada aparelho mostra uma captura REAL do site (em vez de mockup em código). Abas trocam o projeto: Brasa Fish, Meteoro Joias, Balneário Valentim, Eletricista da NASA.
+- Responsive.js: cena fixa (pin) no desktop com celular 390px, tablet 820px e notebook 1440px entrando pela rolagem; no mobile/tablet entram em sequência. Cada aparelho mostra uma captura REAL do site (em vez de mockup em código). Abas trocam o projeto: Brasa Fish, Meteoro Joias, Balneário Valentim, Eletricista da NASA.
 
 ## Regras de trabalho
 - Não recriar o projeto nem sobrescrever código existente.
