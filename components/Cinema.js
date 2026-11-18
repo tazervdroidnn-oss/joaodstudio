@@ -6,7 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-// Elementos com .g ou data-unit são animados inteiros (mantém o degradê do texto)
+// Elementos com .g ou data-unit são animados inteiros (mantém a cor do destaque)
 const UNIT = ".g, [data-unit]";
 
 // Divide o texto em palavras (e letras). Retorna também o revert para restaurar o HTML original.
@@ -70,56 +70,50 @@ export default function Cinema() {
     const splits = [];
 
     const ctx = gsap.context(() => {
-      // Título do hero: letras sobem de uma máscara, palavra em degradê entra com desfoque
+      // Título do hero: letras sobem de uma máscara, sem desfoque nem brilho
       const h1 = document.querySelector("[data-hero-title]");
       if (h1) {
         const s = split(h1, true);
         splits.push(s);
-        gsap.set(s.chars, { yPercent: 120, rotate: 8, opacity: 0, transformOrigin: "0% 100%" });
-        gsap.set(s.units, { opacity: 0, scale: 0.86, y: 20, filter: "blur(14px)" });
-        const tl = gsap.timeline({ delay: 0.3 });
-        tl.to(s.chars, { yPercent: 0, rotate: 0, opacity: 1, duration: 1, ease: "expo.out", stagger: 0.014 });
-        tl.to(s.units, {
-          opacity: 1, scale: 1, y: 0, filter: "blur(0px)", duration: 1.2, ease: "power3.out",
-          onComplete: () => { gsap.set(s.units, { clearProps: "filter" }); h1.classList.add("shine"); },
-        }, 0.5);
+        gsap.set(s.chars, { yPercent: 105 });
+        gsap.set(s.units, { opacity: 0, y: 14 });
+        const tl = gsap.timeline({ delay: 0.25 });
+        tl.to(s.chars, { yPercent: 0, duration: 0.9, ease: "power4.out", stagger: 0.012 });
+        tl.to(s.units, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, 0.45);
       }
 
-      // Títulos das seções: mesmo efeito, disparado ao rolar
+      // Títulos das seções: mesmo efeito, ao rolar
       document.querySelectorAll("[data-split]").forEach((el) => {
         const s = split(el, true);
         splits.push(s);
-        gsap.set(s.chars, { yPercent: 118, rotate: 7, opacity: 0, transformOrigin: "0% 100%" });
-        gsap.set(s.units, { opacity: 0, y: 28, filter: "blur(10px)" });
+        gsap.set(s.chars, { yPercent: 105 });
+        gsap.set(s.units, { opacity: 0, y: 14 });
         ScrollTrigger.create({
-          trigger: el, start: "top 86%", once: true,
+          trigger: el, start: "top 88%", once: true,
           onEnter: () => {
-            gsap.to(s.chars, { yPercent: 0, rotate: 0, opacity: 1, duration: 0.95, ease: "expo.out", stagger: 0.02 });
-            gsap.to(s.units, {
-              opacity: 1, y: 0, filter: "blur(0px)", duration: 1.1, ease: "power3.out", delay: 0.25,
-              onComplete: () => { gsap.set(s.units, { clearProps: "filter" }); el.classList.add("shine"); },
-            });
+            gsap.to(s.chars, { yPercent: 0, duration: 0.85, ease: "power4.out", stagger: 0.014 });
+            gsap.to(s.units, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out", delay: 0.2 });
           },
         });
       });
 
-      // Pontes de texto: as palavras acendem conforme a rolagem; destaques ganham marca-texto
+      // Pontes de texto: as palavras acendem conforme a rolagem; o destaque ganha sublinhado
       document.querySelectorAll("[data-bridge]").forEach((p) => {
         const s = split(p, false);
         splits.push(s);
-        gsap.set(s.words, { opacity: 0.14 });
+        gsap.set(s.words, { opacity: 0.2 });
         gsap.to(s.words, {
-          opacity: 1, ease: "none", stagger: 0.12,
-          scrollTrigger: { trigger: p, start: "top 85%", end: "bottom 50%", scrub: 0.6 },
+          opacity: 1, ease: "none", stagger: 0.1,
+          scrollTrigger: { trigger: p, start: "top 85%", end: "bottom 52%", scrub: 0.5 },
         });
         ScrollTrigger.create({
-          trigger: p, start: "top 45%",
+          trigger: p, start: "top 50%",
           onEnter: () => p.classList.add("on"),
           onLeaveBack: () => p.classList.remove("on"),
         });
       });
 
-      // Fios que ligam uma seção à outra
+      // Fios finos que ligam uma seção à outra
       document.querySelectorAll("[data-thread]").forEach((t) => {
         gsap.to(t, {
           scaleY: 1, ease: "none",
@@ -127,7 +121,7 @@ export default function Cinema() {
         });
       });
 
-      // Linha de luz no topo de cada divisão
+      // Linha fina no topo de cada divisão
       secs.forEach((s) => {
         ScrollTrigger.create({ trigger: s, start: "top 82%", once: true, onEnter: () => s.classList.add("in") });
       });
@@ -139,23 +133,12 @@ export default function Cinema() {
       });
     });
 
-    // Holofote que segue o mouse dentro dos cards
-    const onMove = (e) => {
-      const c = e.target.closest && e.target.closest(".card");
-      if (!c) return;
-      const r = c.getBoundingClientRect();
-      c.style.setProperty("--mx", `${e.clientX - r.left}px`);
-      c.style.setProperty("--my", `${e.clientY - r.top}px`);
-    };
-    document.addEventListener("pointermove", onMove, { passive: true });
-
     const refresh = () => ScrollTrigger.refresh();
     const t = setTimeout(refresh, 600);
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(refresh);
 
     return () => {
       clearTimeout(t);
-      document.removeEventListener("pointermove", onMove);
       ctx.revert();
       splits.forEach((s) => s.revert());
     };

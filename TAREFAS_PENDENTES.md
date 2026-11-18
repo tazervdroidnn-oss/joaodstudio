@@ -7,6 +7,7 @@
   Plano: Cinema.js (letras por caractere, ponte de texto com scroll, fios entre seções, barra de progresso), Bridge.js, Marquee.js, CSS com cor vívida por seção (acc-*), BRIEFING_PAGINA.md e design/figma-tokens.json.
   Estado 23:55: implementado e com build OK na branch feat/cinematico (Cinema.js, Bridge.js, Marquee.js, CSS cinematográfico, BRIEFING_PAGINA.md, design/figma-tokens.json). Não testado visualmente (sem navegador): o João precisa conferir a prévia da Vercel no celular e no desktop.
   Figma: conector sugerido, ainda não conectado; tokens prontos para importar.
+  ► 17/11 23:55 — FEITO o pedido do João: faixa de palavras (Marquee) removida, brilho das letras tirado, acabamento editorial sem cara de IA (sem holofote, sem grão, sem desfoque, sem emojis), textos mais persuasivos. Build OK na branch feat/cinematico; falta o João conferir a prévia no celular e no desktop.
   Próximo: o João confere a prévia; ajustar o que pedir; só então mesclar na main (com confirmação).
   Se cair a sessão: git switch feat/cinematico, ler este bloco. Não mexer na main sem confirmação do João.
 - Nenhuma tarefa de código em andamento. Seção responsiva publicada na main.

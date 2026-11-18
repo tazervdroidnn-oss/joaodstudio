@@ -12,17 +12,17 @@ Direto, confiante, cinematográfico. Frases curtas. Uma ideia por tela.
 ## Narrativa (cada seção responde a uma dúvida e a ponte de texto liga com a próxima)
 | # | Seção | Dúvida do visitante | Cor |
 |---|-------|---------------------|-----|
-| - | Hero | O que ele faz por mim? | ciano → violeta → magenta |
-| 01 | Prova (Numbers) | Funciona mesmo? | ciano → azul → violeta |
-| 02 | No ar (Projects) | Posso ver sites reais? | magenta → laranja → âmbar |
+| - | Hero | O que ele faz por mim? | ciano → violeta |
+| 01 | Prova (Numbers) | Funciona mesmo? | ciano → azul |
+| 02 | No ar (Projects) | Posso ver sites reais? | magenta → laranja |
 | 03 | Todas as telas (Responsive) | Funciona no meu celular? | violeta (cor própria de cada projeto) |
-| - | Por quê (Services) | Por que eu preciso disso? | âmbar → laranja → magenta |
-| 04 | Como (Process) | Como é o processo? | verde → ciano → azul |
-| 05 | Sua vez (CTA) | Qual é o próximo passo? | azul → violeta → magenta |
+| - | Por quê (Services) | Por que eu preciso disso? | âmbar → laranja |
+| 04 | Como (Process) | Como é o processo? | verde → ciano |
+| 05 | Sua vez (CTA) | Qual é o próximo passo? | azul → violeta |
 
 ## Paleta (tokens em design/figma-tokens.json)
 - Base escura: #050a1a, #0a1330, cartão #0e1a3f. Texto #eaf1ff, apoio #9fb0d6.
-- Vívidas: ciano #00e5ff, azul #2b6cff, violeta #7c5cff, magenta #ff3d9a, âmbar #ffb800, verde #19f0a0.
+- Vívidas: ciano #22b8e6, azul #2b6cff, violeta #7c5cff, magenta #f0457f, âmbar #f0a500, verde #1fd08f.
 - Regra: uma cor vívida dominante por seção; o degradê só entra nas palavras em destaque.
 - Modo claro: as cores sólidas escurecem um pouco para manter o contraste do texto.
 
@@ -32,14 +32,14 @@ Direto, confiante, cinematográfico. Frases curtas. Uma ideia por tela.
 - Pontes de texto: Sora 800, clamp(26px, 4.8vw, 58px).
 
 ## Textos em destaque
-- Palavra-chave do título em degradê animado (classe .g), uma por título.
-- Nas pontes: palavra colorida com brilho e marca-texto que desenha ao rolar (tag <em className="hl">).
+- Palavra-chave do título em degradê curto, sem animação (classe .g), uma por título.
+- Nas pontes: palavra na cor da seção com sublinhado fino que desenha ao rolar (tag <em className="hl">). Sem sombra de brilho.
 
 ## Movimento (GSAP)
-- Título do hero: letras sobem de uma máscara em cascata; palavra em degradê entra com desfoque.
+- Título do hero: letras sobem de uma máscara em cascata curta, sem desfoque e sem brilho.
 - Títulos das seções: mesmo efeito, disparado ao rolar.
-- Pontes: palavras acendem conforme a rolagem; fio de luz desce e liga à próxima seção.
-- Acabamento entre divisões: linha de luz no topo, faixa de palavras (marquee), barra de progresso, holofote nos cards.
+- Pontes: palavras acendem conforme a rolagem; um fio fino desce e liga à próxima seção.
+- Acabamento entre divisões: linha fina no topo de cada seção, barra de progresso de 2px e borda do card na cor da seção. Sem faixa de palavras, sem holofote, sem grão.
 - Respeita prefers-reduced-motion (tudo aparece estático).
 
 ## Regras

@@ -1,6 +1,5 @@
 import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
-import Marquee from "@/components/Marquee";
 import Bridge from "@/components/Bridge";
 import Numbers from "@/components/Numbers";
 import Projects from "@/components/Projects";
@@ -16,26 +15,25 @@ export default function Home() {
     <main>
       <Nav />
       <Hero />
-      <Marquee />
       <Bridge n="01" label="Prova" acc="c">
-        Visual bonito chama atenção. <em className="hl">Estrutura</em> é o que vende. E <em className="hl">45+ projetos</em> provam que o método funciona.
+        Beleza chama atenção. Estrutura é o que <em className="hl">fecha a venda</em>. São mais de <em className="hl">45 projetos</em> entregues aplicando isso.
       </Bridge>
       <Numbers />
       <Bridge n="02" label="No ar" acc="m">
-        Número é só metade da história. A outra metade está <em className="hl">no ar agora</em>, rodando para clientes reais.
+        Nada de maquete. São sites reais, <em className="hl">no ar</em>, atendendo clientes pelo WhatsApp.
       </Bridge>
       <Projects />
       <Bridge n="03" label="Todas as telas" acc="v">
-        O mesmo projeto precisa brilhar no <em className="hl">celular</em>, no <em className="hl">tablet</em> e no <em className="hl">notebook</em>.
+        Seu cliente vai abrir no celular, no tablet ou no notebook. A página precisa <em className="hl">funcionar nos três</em>.
       </Bridge>
       <Responsive />
       <Services />
       <Bridge n="04" label="Como" acc="g">
-        Convenceu? Então veja como sua ideia sai do <em className="hl">papel</em> e vai para o <em className="hl">ar</em> em quatro passos.
+        Se faz sentido para a sua marca, o caminho até a página no ar é curto: <em className="hl">quatro etapas</em>.
       </Bridge>
       <Process />
       <Bridge n="05" label="Sua vez" acc="h">
-        Falta um passo. O <em className="hl">próximo cliente</em> já está clicando no seu perfil.
+        Cada dia sem uma página que convença é um cliente que <em className="hl">clicou e foi embora</em>.
       </Bridge>
       <Cta />
       <Footer />

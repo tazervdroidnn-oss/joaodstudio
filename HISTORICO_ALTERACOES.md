@@ -63,3 +63,11 @@ feat: acabamento cinematográfico (letras GSAP, pontes de texto, cores vívidas 
 - globals.css (+70 linhas no fim): cor vívida por seção, degradê animado, vinheta e grão no hero, faixa de palavras, pontes, acessibilidade com prefers-reduced-motion.
 - Documentos: BRIEFING_PAGINA.md e design/figma-tokens.json (para importar no Figma).
 - npm.cmd run build: passou sem erros (rota / com 52,8 kB). Sem teste visual.
+
+## 17/11/2026 — branch feat/cinematico: acabamento mais sóbrio (a pedido do João)
+- Removido: components/Marquee.js (faixa de palavras), vinheta e grão do hero, orbe magenta, holofote nos cards, sombras de brilho, degradê animado, desfoque e rotação nas letras.
+- Cinema.js reescrito: letras sobem da máscara (power4.out, sem blur), pontes com palavras que acendem, fios finos, linha no topo das seções, barra de progresso de 2px.
+- globals.css: bloco final refeito (cores por seção mais sóbrias, degradê de 2 cores, sublinhado fino nos destaques, rótulos editoriais nas pontes).
+- Services.js: emojis trocados por numeração 01 a 04 e textos reescritos, mais específicos.
+- page.js: textos das 5 pontes reescritos, mais concretos e persuasivos.
+- BRIEFING_PAGINA.md atualizado. npm.cmd run build: passou sem erros (rota / com 52,6 kB). Sem teste visual.

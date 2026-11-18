@@ -5,21 +5,21 @@
     "card": { "value": "#0e1a3f", "type": "color" },
     "text": { "value": "#eaf1ff", "type": "color" },
     "muted": { "value": "#9fb0d6", "type": "color" },
-    "cyan": { "value": "#00e5ff", "type": "color" },
+    "cyan": { "value": "#22b8e6", "type": "color" },
     "blue": { "value": "#2b6cff", "type": "color" },
     "violet": { "value": "#7c5cff", "type": "color" },
-    "magenta": { "value": "#ff3d9a", "type": "color" },
-    "amber": { "value": "#ffb800", "type": "color" },
-    "green": { "value": "#19f0a0", "type": "color" },
+    "magenta": { "value": "#f0457f", "type": "color" },
+    "amber": { "value": "#f0a500", "type": "color" },
+    "green": { "value": "#1fd08f", "type": "color" },
     "whatsapp": { "value": "#25d366", "type": "color" }
   },
   "gradient": {
-    "hero": { "value": "linear-gradient(110deg, #00e5ff, #8a5cff, #ff3d9a)", "type": "color" },
-    "proof": { "value": "linear-gradient(110deg, #00e5ff, #2b6cff, #7c5cff)", "type": "color" },
-    "projects": { "value": "linear-gradient(110deg, #ff3d9a, #ff6a3d, #ffb800)", "type": "color" },
-    "services": { "value": "linear-gradient(110deg, #ffd23d, #ff8a00, #ff3d9a)", "type": "color" },
-    "process": { "value": "linear-gradient(110deg, #19f0a0, #00d4ff, #2b6cff)", "type": "color" },
-    "cta": { "value": "linear-gradient(135deg, #2b6cff, #7c5cff 55%, #ff3d9a)", "type": "color" }
+    "hero": { "value": "linear-gradient(100deg, #2bc4f0, #7c6bff)", "type": "color" },
+    "proof": { "value": "linear-gradient(100deg, #2bc4f0, #3d7bff)", "type": "color" },
+    "projects": { "value": "linear-gradient(100deg, #f0457f, #ff7a45)", "type": "color" },
+    "services": { "value": "linear-gradient(100deg, #f5b82e, #ff8a3d)", "type": "color" },
+    "process": { "value": "linear-gradient(100deg, #1fd08f, #19b5d6)", "type": "color" },
+    "cta": { "value": "linear-gradient(135deg, #2b6cff, #7c5cff)", "type": "color" }
   },
   "font": {
     "display": { "value": "Sora", "type": "fontFamilies" },

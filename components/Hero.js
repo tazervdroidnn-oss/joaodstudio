@@ -7,7 +7,6 @@ export default function Hero() {
       <div className="orb" style={{ width: 480, height: 480, background: "var(--b1)", top: -80, left: -120 }} />
       <div className="orb" style={{ width: 420, height: 420, background: "var(--v)", bottom: -100, right: -80, animationDelay: "-5s" }} />
       <div className="orb" style={{ width: 300, height: 300, background: "var(--b2)", top: "40%", left: "55%", opacity: 0.28 }} />
-      <div className="orb" style={{ width: 340, height: 340, background: "var(--m)", top: "58%", left: "6%", opacity: 0.3, animationDelay: "-8s" }} />
       <div className="wrap relative z-[2]" data-hero>
         <div className="grid items-center gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-6">
           <div className="order-2 text-center lg:order-1 lg:text-left">
