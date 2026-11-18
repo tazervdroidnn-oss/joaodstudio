@@ -71,3 +71,9 @@ feat: acabamento cinematográfico (letras GSAP, pontes de texto, cores vívidas 
 - Services.js: emojis trocados por numeração 01 a 04 e textos reescritos, mais específicos.
 - page.js: textos das 5 pontes reescritos, mais concretos e persuasivos.
 - BRIEFING_PAGINA.md atualizado. npm.cmd run build: passou sem erros (rota / com 52,6 kB). Sem teste visual.
+
+## 18/11/2026 — branch feat/cinematico: seção responsiva no celular (commit 46605fc)
+- components/Responsive.js: no celular, o aparelho abre grande e centralizado e encolhe até o lugar quando tablet e laptop chegam (scrub do GSAP, fixo na rolagem); trilho Mobile/Tablet/Desktop clicável leva direto à etapa; abas de projeto (Brasa, Meteoro, Valentim, NASA) trocam as capturas.
+- public/sites: 12 capturas reais em webp (celular, tablet e laptop de cada projeto).
+- app/globals.css (bloco "Celular em pé", classes .rs-m): palco dimensionado pela altura da tela, texto e trilho na mesma tela, espaço de 104 px embaixo para o botão flutuante do WhatsApp não cobrir a aba NASA, 86 px em cima para o laptop não encostar no cabeçalho.
+- Teste: script com Chrome em modo de teste (C:\Temp\cdp-test.mjs) em 390 px: sem rolagem lateral, etapas 0, 1 e 2 na ordem, abas e trilho funcionando. npm run build passou.

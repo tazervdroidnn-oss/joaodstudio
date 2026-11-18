@@ -1,6 +1,6 @@
 # TAREFAS PENDENTES — João D Studio
 
-Última atualização: 17/11/2026
+Última atualização: 18/11/2026
 
 ## Em andamento
 ► CHECKPOINT 17/11/2026 23:30 — branch feat/cinematico criada a partir da main (e2ccfd2), ainda sem commits. Pedido do João: efeitos cinematográficos, textos conectados entre seções, acabamento profissional nas divisões, letras animadas (GSAP), cores vívidas, textos em destaque, responsivo, algo que combine com Figma.
@@ -10,6 +10,7 @@
   ► 17/11 23:55 — FEITO o pedido do João: faixa de palavras (Marquee) removida, brilho das letras tirado, acabamento editorial sem cara de IA (sem holofote, sem grão, sem desfoque, sem emojis), textos mais persuasivos. Build OK na branch feat/cinematico; falta o João conferir a prévia no celular e no desktop.
   ► 17/11 23:40 — NOVO PEDIDO do João: na seção "Uma página. Todas as telas." (Responsive.js), deixar mais elegante e profissional, brilho laranja menos estourado, efeito cinematográfico em 3D. Em andamento na branch feat/cinematico. Ele quer que o progresso seja salvo com frequência (ele pediu salvar ao chegar perto do limite; não consigo ver o medidor de uso, então salvo a cada etapa).
   ► 17/11 (retomada) — FEITO e commitado (686970d, push na feat/cinematico, build OK): seção "Uma página. Todas as telas." com cores de texto na cor da seção, brilho laranja contido, sombra de chão, molduras em titânio escuro e profundidade 3D (aparelhos girados, inclinação com o mouse via GSAP quickTo, só em dispositivos com hover). Falta o João conferir a prévia da Vercel.
+  ► 18/11 00:05 — FEITO e commitado (46605fc, feat/cinematico, build OK, testado em 390 px com navegador de teste): seção responsiva no celular com aparelhos fixos na rolagem (celular abre grande e encolhe, depois tablet e laptop), trilho Mobile/Tablet/Desktop clicável, abas de projeto, capturas reais por projeto (public/sites/*.webp). Ajuste final: mais espaço embaixo para o botão flutuante do WhatsApp não cobrir a aba NASA e mais respiro entre o laptop e o cabeçalho. Sem rolagem lateral. Falta o João conferir a prévia da Vercel no celular e no desktop.
   Próximo: o João confere a prévia; ajustar o que pedir; só então mesclar na main (com confirmação).
   Se cair a sessão: git switch feat/cinematico, ler este bloco. Não mexer na main sem confirmação do João.
 - Nenhuma tarefa de código em andamento. Seção responsiva publicada na main.
