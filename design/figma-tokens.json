@@ -1,0 +1,46 @@
+{
+  "color": {
+    "bg": { "value": "#050a1a", "type": "color" },
+    "bg2": { "value": "#0a1330", "type": "color" },
+    "card": { "value": "#0e1a3f", "type": "color" },
+    "text": { "value": "#eaf1ff", "type": "color" },
+    "muted": { "value": "#9fb0d6", "type": "color" },
+    "cyan": { "value": "#00e5ff", "type": "color" },
+    "blue": { "value": "#2b6cff", "type": "color" },
+    "violet": { "value": "#7c5cff", "type": "color" },
+    "magenta": { "value": "#ff3d9a", "type": "color" },
+    "amber": { "value": "#ffb800", "type": "color" },
+    "green": { "value": "#19f0a0", "type": "color" },
+    "whatsapp": { "value": "#25d366", "type": "color" }
+  },
+  "gradient": {
+    "hero": { "value": "linear-gradient(110deg, #00e5ff, #8a5cff, #ff3d9a)", "type": "color" },
+    "proof": { "value": "linear-gradient(110deg, #00e5ff, #2b6cff, #7c5cff)", "type": "color" },
+    "projects": { "value": "linear-gradient(110deg, #ff3d9a, #ff6a3d, #ffb800)", "type": "color" },
+    "services": { "value": "linear-gradient(110deg, #ffd23d, #ff8a00, #ff3d9a)", "type": "color" },
+    "process": { "value": "linear-gradient(110deg, #19f0a0, #00d4ff, #2b6cff)", "type": "color" },
+    "cta": { "value": "linear-gradient(135deg, #2b6cff, #7c5cff 55%, #ff3d9a)", "type": "color" }
+  },
+  "font": {
+    "display": { "value": "Sora", "type": "fontFamilies" },
+    "body": { "value": "Inter", "type": "fontFamilies" }
+  },
+  "typography": {
+    "hero": { "value": { "fontFamily": "{font.display}", "fontWeight": "800", "fontSize": "64", "lineHeight": "1.1", "letterSpacing": "-2%" }, "type": "typography" },
+    "h2": { "value": { "fontFamily": "{font.display}", "fontWeight": "800", "fontSize": "52", "lineHeight": "1.1", "letterSpacing": "-2%" }, "type": "typography" },
+    "bridge": { "value": { "fontFamily": "{font.display}", "fontWeight": "800", "fontSize": "58", "lineHeight": "1.14", "letterSpacing": "-2.5%" }, "type": "typography" },
+    "label": { "value": { "fontFamily": "{font.body}", "fontWeight": "700", "fontSize": "12", "letterSpacing": "14%", "textCase": "uppercase" }, "type": "typography" },
+    "body": { "value": { "fontFamily": "{font.body}", "fontWeight": "400", "fontSize": "18", "lineHeight": "1.65" }, "type": "typography" }
+  },
+  "radius": {
+    "card": { "value": "22", "type": "borderRadius" },
+    "pill": { "value": "999", "type": "borderRadius" },
+    "cta": { "value": "32", "type": "borderRadius" }
+  },
+  "motion": {
+    "letterReveal": { "value": "expo.out, 0.95s, stagger 0.02s", "type": "other" },
+    "heroTitle": { "value": "expo.out, 1s, stagger 0.014s, delay 0.3s", "type": "other" },
+    "bridgeScrub": { "value": "scrub 0.6, opacity 0.14 to 1, stagger 0.12", "type": "other" },
+    "hairline": { "value": "cubic-bezier(0.2, 0.7, 0.2, 1), 1.4s", "type": "other" }
+  }
+}

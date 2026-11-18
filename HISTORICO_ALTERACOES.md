@@ -53,3 +53,13 @@ feat: hero com retrato, capturas reais nos projetos e na secao responsiva, metad
 - Merge na main em fast-forward (cea08e9 → 36427a8), com os commits 8c0363a e 36427a8. As entradas acima que dizem "só local" ou "fora da main" ficaram superadas por esta.
 - npm.cmd run build na main: passou sem erros (Next.js 15.5.29, rota / com 51,8 kB).
 - Push da main enviado ao GitHub, disparando o deploy de produção na Vercel.
+
+
+## 17/11/2026 — branch feat/cinematico (NÃO está na main)
+feat: acabamento cinematográfico (letras GSAP, pontes de texto, cores vívidas por seção)
+- Novos: components/Cinema.js (letras por caractere no hero e nos títulos, palavras que acendem com a rolagem, fios entre seções, linha de luz nas divisões, barra de progresso, holofote nos cards), components/Bridge.js (5 pontes de texto), components/Marquee.js (faixa de palavras).
+- app/page.js: Marquee após o hero, pontes entre as seções, Cinema no fim.
+- Hero, Numbers, Projects, Services, Process, Footer: classes de cor (acc-*) e data-split nos títulos; novo orbe magenta no hero. Os h2 perderam a classe rv para não animar duas vezes.
+- globals.css (+70 linhas no fim): cor vívida por seção, degradê animado, vinheta e grão no hero, faixa de palavras, pontes, acessibilidade com prefers-reduced-motion.
+- Documentos: BRIEFING_PAGINA.md e design/figma-tokens.json (para importar no Figma).
+- npm.cmd run build: passou sem erros (rota / com 52,8 kB). Sem teste visual.

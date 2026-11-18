@@ -38,6 +38,7 @@ Next.js 15 (App Router), React 19, Tailwind CSS 3.4, GSAP 3 (ScrollTrigger). Jav
 - Rodar `npm.cmd run build` antes de publicar.
 - Não exibir preços na seção Responsive.
 - Alterar a main só com confirmação do João (publica na Vercel).
+- Sempre usar o Desktop Commander para salvar onde paramos (TAREFAS_PENDENTES.md e HISTORICO_ALTERACOES.md) a cada etapa concluída.
 
 ## Como retomar em uma conta nova
 1. Usar o Desktop Commander e abrir C:\sites\joaodstudio.

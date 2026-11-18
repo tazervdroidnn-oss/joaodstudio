@@ -7,9 +7,9 @@ const steps = [
 
 export default function Process() {
   return (
-    <section id="processo" className="sec">
+    <section id="processo" className="sec acc-g">
       <div className="wrap">
-        <h2 className="h2 rv">Como <span className="g">funciona</span></h2>
+        <h2 className="h2" data-split>Como <span className="g">funciona</span></h2>
         <p className="sub rv">Um processo simples, do primeiro contato até a página no ar.</p>
         <div className="steps grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {steps.map(([t, d]) => (

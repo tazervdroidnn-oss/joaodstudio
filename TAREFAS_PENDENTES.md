@@ -3,6 +3,12 @@
 Última atualização: 17/11/2026
 
 ## Em andamento
+► CHECKPOINT 17/11/2026 23:30 — branch feat/cinematico criada a partir da main (e2ccfd2), ainda sem commits. Pedido do João: efeitos cinematográficos, textos conectados entre seções, acabamento profissional nas divisões, letras animadas (GSAP), cores vívidas, textos em destaque, responsivo, algo que combine com Figma.
+  Plano: Cinema.js (letras por caractere, ponte de texto com scroll, fios entre seções, barra de progresso), Bridge.js, Marquee.js, CSS com cor vívida por seção (acc-*), BRIEFING_PAGINA.md e design/figma-tokens.json.
+  Estado 23:55: implementado e com build OK na branch feat/cinematico (Cinema.js, Bridge.js, Marquee.js, CSS cinematográfico, BRIEFING_PAGINA.md, design/figma-tokens.json). Não testado visualmente (sem navegador): o João precisa conferir a prévia da Vercel no celular e no desktop.
+  Figma: conector sugerido, ainda não conectado; tokens prontos para importar.
+  Próximo: o João confere a prévia; ajustar o que pedir; só então mesclar na main (com confirmação).
+  Se cair a sessão: git switch feat/cinematico, ler este bloco. Não mexer na main sem confirmação do João.
 - Nenhuma tarefa de código em andamento. Seção responsiva publicada na main.
 - Hero com retrato e capturas reais publicados na main (aguardando conferência do João no site oficial).
 

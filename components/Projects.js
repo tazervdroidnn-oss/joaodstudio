@@ -27,9 +27,9 @@ const projects = [
 
 export default function Projects() {
   return (
-    <section id="projetos" className="sec">
+    <section id="projetos" className="sec acc-m">
       <div className="wrap">
-        <h2 className="h2 rv">Projetos que <span className="g">já entreguei</span></h2>
+        <h2 className="h2" data-split>Projetos que <span className="g">já entreguei</span></h2>
         <p className="sub rv">Sites reais, no ar. Passe o mouse (ou toque) na miniatura para ver a página rolando e clique para visitar.</p>
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
           {projects.map((p) => (

@@ -7,9 +7,9 @@ const services = [
 
 export default function Services() {
   return (
-    <section id="servicos" className="sec bg-bg2">
+    <section id="servicos" className="sec acc-y bg-bg2">
       <div className="wrap">
-        <h2 className="h2 rv">Por que a sua marca <span className="g">precisa</span> de uma landing page?</h2>
+        <h2 className="h2" data-split>Por que a sua marca <span className="g">precisa</span> de uma landing page?</h2>
         <p className="sub rv">Quem clica no seu perfil decide em segundos. Uma página focada guia o visitante até a ação que importa: o contato, o orçamento, a venda.</p>
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {services.map(([icon, t, d]) => (

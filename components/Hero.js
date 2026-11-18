@@ -3,15 +3,16 @@ import { WA_LINK } from "./config";
 
 export default function Hero() {
   return (
-    <header id="top" className="relative grid min-h-[100svh] items-center overflow-hidden pb-16 pt-28 md:pb-12">
+    <header id="top" className="acc-h relative grid min-h-[100svh] items-center overflow-hidden pb-16 pt-28 md:pb-12">
       <div className="orb" style={{ width: 480, height: 480, background: "var(--b1)", top: -80, left: -120 }} />
       <div className="orb" style={{ width: 420, height: 420, background: "var(--v)", bottom: -100, right: -80, animationDelay: "-5s" }} />
       <div className="orb" style={{ width: 300, height: 300, background: "var(--b2)", top: "40%", left: "55%", opacity: 0.28 }} />
+      <div className="orb" style={{ width: 340, height: 340, background: "var(--m)", top: "58%", left: "6%", opacity: 0.3, animationDelay: "-8s" }} />
       <div className="wrap relative z-[2]" data-hero>
         <div className="grid items-center gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-6">
           <div className="order-2 text-center lg:order-1 lg:text-left">
             <span className="hero-i mb-6 inline-block rounded-full border bg-card px-4 py-1.5 text-sm text-b2">● Criador de Landing Pages</span>
-            <h1 className="hero-i mx-auto max-w-[900px] text-[clamp(34px,5.4vw,64px)] font-extrabold lg:mx-0">
+            <h1 data-hero-title className="hero-i mx-auto max-w-[900px] text-[clamp(34px,5.4vw,64px)] font-extrabold lg:mx-0">
               Transformo cliques em <span className="g">clientes</span> com landing pages de alto impacto.
             </h1>
             <p className="hero-i mx-auto my-6 mb-9 max-w-[580px] text-base text-mut md:text-lg lg:mx-0">

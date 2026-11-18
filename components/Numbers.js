@@ -1,13 +1,13 @@
 export default function Numbers() {
   return (
-    <section id="numeros" className="sec bg-bg2">
+    <section id="numeros" className="sec acc-c bg-bg2">
       <div className="wrap grid items-center gap-8 md:grid-cols-[1fr_1.4fr]">
         <div className="rv">
           <div className="g font-display text-[clamp(80px,16vw,170px)] font-extrabold leading-none">
             <span data-count="45">0</span>
             <small className="text-[.4em]">+</small>
           </div>
-          <h2 className="text-[clamp(24px,4vw,36px)] font-extrabold">projetos entregues</h2>
+          <h2 data-split className="text-[clamp(24px,4vw,36px)] font-extrabold">projetos entregues</h2>
           <p className="mt-4 max-w-[620px] text-mut">
             Negócios de turismo, joias, pesca esportiva e tecnologia automotiva já ganharam uma presença digital profissional.
           </p>

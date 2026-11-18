@@ -8,7 +8,7 @@ export function Cta() {
         <div className="cta-box rv rounded-[32px] px-6 py-16 md:py-24">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/joao-d-256.jpg" alt="João D" width="96" height="96" loading="lazy" className="cta-avatar" />
-          <h2 className="mb-4 text-[clamp(30px,5vw,52px)] font-extrabold">Vamos colocar sua marca em outro nível?</h2>
+          <h2 data-split className="mb-4 text-[clamp(30px,5vw,52px)] font-extrabold">Vamos colocar sua marca em outro nível?</h2>
           <p className="mx-auto mb-8 max-w-[520px] opacity-90">
             Chame no WhatsApp e conte sobre o seu projeto. Sua próxima landing page pode começar hoje.
           </p>
