@@ -146,11 +146,10 @@ h1, h2, h3, h4 { font-family: var(--font-sora), Inter, system-ui, sans-serif; li
 .rs-cap h3 { margin-bottom: 10px; font-size: clamp(26px, 3vw, 38px); font-weight: 800; }
 .rs-cap p { max-width: 46ch; color: var(--mut); }
 .rs-copy { position: relative; }
-.rs-prog { display: none; }
-.rs-pinned .rs-capwrap { position: relative; display: block; height: 290px; }
-.rs-pinned .rs-cap { position: absolute; inset: 0 0 auto 0; border-left-color: transparent; }
-.rs-pinned .rs-prog { display: block; position: absolute; left: 0; top: 0; width: 2px; height: 290px; background: var(--bd); }
-.rs-prog i { display: block; width: 100%; height: 100%; background: linear-gradient(var(--b2), var(--v)); transform: scaleY(0); transform-origin: top; }
+/* Cena fixa: os três textos ocupam o mesmo lugar (a altura é a do maior, sem pulo) */
+.rs-pinned .rs-capwrap { display: grid; }
+.rs-pinned .rs-cap { grid-area: 1 / 1; border-left-color: transparent; padding-left: 0; }
+.rs-rail { display: none; }
 
 .rs-tabs-wrap { margin-top: 34px; }
 .rs-tabs-wrap small { display: block; margin-bottom: 10px; color: var(--mut); font-size: 13px; }
@@ -284,3 +283,77 @@ h1, h2, h3, h4 { font-family: var(--font-sora), Inter, system-ui, sans-serif; li
 .rs-tabs button::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--tc); opacity: 0.85; }
 .rs-tabs button:hover { border-color: color-mix(in srgb, var(--tc) 60%, var(--bd)); }
 .rs-tabs button.on { background: color-mix(in srgb, var(--tc) 13%, var(--card)); border-color: color-mix(in srgb, var(--tc) 70%, transparent); color: var(--tx); box-shadow: none; }
+
+/* ============================================================
+   Cena responsiva no celular, trilho de etapas e trava lateral
+   ============================================================ */
+
+/* Trava lateral: a página nunca arrasta para os lados. Com "clip" não nasce área de rolagem,
+   então a cena fixa continua exata. Em navegador antigo, vale o "hidden" do body. */
+html { overscroll-behavior-x: none; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+@supports (overflow: clip) { html, body { overflow-x: clip; } }
+body { touch-action: pan-y pinch-zoom; }
+.rs { overflow-x: clip; }
+.rs-stage { -webkit-touch-callout: none; -webkit-tap-highlight-color: transparent; }
+.rs-shot { -webkit-user-drag: none; pointer-events: none; }
+.rs-fit picture { display: contents; }
+
+/* Altura da cena fixa, estável com a barra de endereço do celular */
+.rs-pinned .rs-pin { height: 100vh; height: 100svh; }
+
+/* Nomes curtos nas abas no celular */
+.rs-t-s { display: none; }
+@media (max-width: 1023px) { .rs-t-l { display: none; } .rs-t-s { display: inline; } }
+
+/* Trilho: Mobile, Tablet e Desktop ligados por uma linha que avança com a rolagem */
+.rs-pinned .rs-rail { position: relative; display: grid; grid-template-columns: repeat(3, 1fr); max-width: 420px; margin-top: 28px; }
+.rs-rail::before, .rs-rail-fill { content: ""; position: absolute; top: 5px; left: 5px; width: 66.666%; height: 1px; }
+.rs-rail::before { background: var(--bd); }
+.rs-rail-fill i { display: block; height: 100%; background: var(--acc); transform-origin: left center; transform: scaleX(0); }
+.rs-node { position: relative; z-index: 1; display: block; min-height: 44px; padding: 0; border: 0; background: none; cursor: pointer; text-align: left; color: var(--mut); font: 600 11px/1.3 var(--font-inter), system-ui, sans-serif; letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.4s; -webkit-tap-highlight-color: transparent; }
+.rs-node::before { content: ""; display: block; width: 11px; height: 11px; margin-bottom: 12px; border-radius: 50%; border: 1px solid color-mix(in srgb, var(--mut) 55%, transparent); background: var(--bg); transition: 0.4s; }
+.rs-node small { display: block; margin-top: 3px; font-weight: 500; letter-spacing: 0.04em; text-transform: none; opacity: 0.75; }
+.rs-node:hover, .rs-node[aria-current="true"] { color: var(--tx); }
+.rs-node.done::before, .rs-node[aria-current="true"]::before { background: var(--acc); border-color: var(--acc); }
+.rs-node[aria-current="true"]::before { box-shadow: 0 0 0 4px color-mix(in srgb, var(--acc) 24%, transparent); }
+.rs-node:focus-visible { outline: 2px solid var(--acc); outline-offset: 6px; border-radius: 4px; }
+
+/* Aparelho da etapa em destaque: os outros recuam e o da vez ganha contorno e etiqueta acesa */
+.rs-pinned .rs-frame { transition: box-shadow 0.7s; }
+.rs-pinned .rs-frame::after { content: ""; position: absolute; inset: 0; z-index: 6; border-radius: inherit; background: #050a1a; opacity: 0; transition: opacity 0.7s; pointer-events: none; }
+.rs-pinned[data-step="0"] :is(.rs-tablet, .rs-laptop) .rs-frame::after,
+.rs-pinned[data-step="1"] :is(.rs-phone, .rs-laptop) .rs-frame::after,
+.rs-pinned[data-step="2"] :is(.rs-phone, .rs-tablet) .rs-frame::after { opacity: 0.46; }
+.rs-pinned[data-step="0"] .rs-phone .rs-frame,
+.rs-pinned[data-step="1"] .rs-tablet .rs-frame,
+.rs-pinned[data-step="2"] .rs-laptop .rs-frame { box-shadow: 0 0 0 1px color-mix(in srgb, var(--acc) 80%, transparent), 0 46px 70px -38px rgba(0, 0, 0, 0.75), 0 0 56px -18px color-mix(in srgb, var(--s-glow) 70%, transparent); }
+.rs-chip { transition: color 0.5s, border-color 0.5s, background 0.5s; }
+.rs-pinned[data-step="0"] .rs-phone .rs-chip,
+.rs-pinned[data-step="1"] .rs-tablet .rs-chip,
+.rs-pinned[data-step="2"] .rs-laptop .rs-chip { color: var(--tx); border-color: var(--acc); background: color-mix(in srgb, var(--acc) 26%, var(--bg)); }
+
+/* Celular em pé: aparelhos em cima, texto, trilho e projetos embaixo, tudo na mesma tela */
+.rs-m .rs-pin { align-content: center; gap: 14px; padding: 86px 0 104px; }
+.rs-m .rs-stage { --pw: 40.5%; width: min(100%, max(220px, calc((100svh - 436px) / 0.9))); max-width: 460px; }
+.rs-m .rs-base { width: 100%; margin-left: 0; }
+.rs-m .rs-node small { display: none; }
+.rs-m .rs-node { min-height: 40px; }
+@media (max-height: 620px) { .rs-m .rs-cap p { display: none; } }
+.rs-m .rs-glow { filter: blur(40px); }
+.rs-m .rs-chip { display: none; }
+.rs-m .rs-num { display: inline-block; margin-right: 10px; font-size: 13px; letter-spacing: 0.06em; }
+.rs-m .rs-cap small { display: inline-block; margin: 0; }
+.rs-m .rs-cap h3 { margin: 8px 0 6px; font-size: clamp(22px, 6.4vw, 28px); }
+.rs-m .rs-cap p { max-width: none; font-size: 14.5px; line-height: 1.5; }
+.rs-m .rs-rail { max-width: none; margin-top: 16px; }
+.rs-m .rs-tabs-wrap { margin-top: 10px; }
+.rs-m .rs-tabs-wrap small, .rs-m .rs-visit { display: none; }
+.rs-m .rs-tabs { flex-wrap: nowrap; gap: 6px; }
+.rs-m .rs-tabs button { flex: 1 1 0; min-width: 0; justify-content: center; padding: 11px 4px; font-size: 12px; text-align: center; }
+.rs-m .rs-tabs button::before { display: none; }
+.rs-m .rs-shot { animation-name: rs-swap-lite, rs-scroll; }
+@keyframes rs-swap-lite { from { opacity: 0; } to { opacity: 1; } }
+
+/* Fora da tela, as animações contínuas param (bateria e fluidez) */
+.rs-off .rs-float, .rs-off .rs-shot { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) { .rs-float, .rs-shot { animation: none; } }

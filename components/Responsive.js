@@ -7,17 +7,19 @@ import WaIcon from "./WaIcon";
 import { WA_LINK } from "./config";
 
 gsap.registerPlugin(ScrollTrigger);
+// Barra de endereço do celular aparecendo/sumindo não deve recalcular a cena (evita tremida).
+ScrollTrigger.config({ ignoreMobileResize: true });
 
 /*
   Cada aparelho mostra uma captura REAL do site, feita na largura do aparelho
-  (1440 / 820 / 390 px), em /public/sites/<id>-<laptop|tablet|phone>.jpg.
+  (1440 / 820 / 390 px), em /public/sites/<id>-<laptop|tablet|phone>.(webp|jpg).
   "glow" e "tabtx" só definem a cor do brilho e da aba de cada projeto.
 */
 const SITES = [
-  { id: "brasa", tab: "Brasa Fish", host: "brasafish.com.br", href: "https://www.brasafish.com.br/", glow: "#f05a25", tabtx: "#ffffff" },
-  { id: "meteoro", tab: "Meteoro Joias", host: "meteorojoias.com.br", href: "https://www.meteorojoias.com.br/", glow: "#d4af37", tabtx: "#111111" },
-  { id: "valentim", tab: "Balneário Valentim", host: "balneariovalentimm.com.br", href: "https://www.balneariovalentimm.com.br/", glow: "#0fa28a", tabtx: "#ffffff" },
-  { id: "nasa", tab: "Eletricista da NASA", host: "eletricadanasa.vercel.app", href: "https://eletricadanasa.vercel.app/", glow: "#2b8cff", tabtx: "#ffffff" },
+  { id: "brasa", tab: "Brasa Fish", short: "Brasa", host: "brasafish.com.br", href: "https://www.brasafish.com.br/", glow: "#f05a25", tabtx: "#ffffff" },
+  { id: "meteoro", tab: "Meteoro Joias", short: "Meteoro", host: "meteorojoias.com.br", href: "https://www.meteorojoias.com.br/", glow: "#d4af37", tabtx: "#111111" },
+  { id: "valentim", tab: "Balneário Valentim", short: "Valentim", host: "balneariovalentimm.com.br", href: "https://www.balneariovalentimm.com.br/", glow: "#0fa28a", tabtx: "#ffffff" },
+  { id: "nasa", tab: "Eletricista da NASA", short: "NASA", host: "eletricadanasa.vercel.app", href: "https://eletricadanasa.vercel.app/", glow: "#2b8cff", tabtx: "#ffffff" },
 ];
 
 const DEVICES = [
@@ -26,14 +28,15 @@ const DEVICES = [
   { key: "phone", label: "Mobile", px: "390 px" },
 ];
 
+// Cada etapa fala de um aparelho: o texto, o trilho e o aparelho em destaque andam juntos.
 const STEPS = [
   ["01", "Mobile · 390 px", "Nasce no celular.", "Quem chega pelo Instagram precisa entender tudo em segundos. Menu enxuto, textos diretos e o botão de WhatsApp sempre ao alcance do polegar."],
   ["02", "Tablet · 820 px", "Cresce sem quebrar.", "O menu se abre, a grade passa para duas colunas e os cards ganham respiro. Nada espremido, nada esticado."],
   ["03", "Desktop · 1440 px", "Ocupa a tela inteira.", "Composição em colunas, hierarquia clara e o mesmo caminho até o contato: título, prova e ação."],
 ];
 
-const preload = (id) => {
-  DEVICES.forEach((d) => { const i = new Image(); i.src = `/sites/${id}-${d.key}.jpg`; });
+const preload = (id, keys = DEVICES.map((d) => d.key)) => {
+  keys.forEach((k) => { const i = new Image(); i.src = `/sites/${id}-${k}.webp`; });
 };
 
 function Device({ d, s }) {
@@ -45,23 +48,138 @@ function Device({ d, s }) {
           <div className="rs-bz">
             {d.key === "laptop" && <div className="rs-bar"><u /><u /><u /><em>{s.host}</em></div>}
             <div className="rs-fit">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                key={`${s.id}-${d.key}`} className="rs-shot" src={`/sites/${s.id}-${d.key}.jpg`}
-                alt="" loading="lazy" decoding="async" draggable="false"
-              />
+              <picture key={`${s.id}-${d.key}`}>
+                <source type="image/webp" srcSet={`/sites/${s.id}-${d.key}.webp`} />
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img className="rs-shot" src={`/sites/${s.id}-${d.key}.jpg`} alt="" loading="lazy" decoding="async" draggable="false" />
+              </picture>
             </div>
           </div>
         </div>
         {d.key === "laptop" && <div className="rs-base" />}
-        </div>
-      </div>
+      </div></div>
     </div>
   );
 }
 
+/*
+  Cena fixa na tela, guiada pela rolagem. Serve ao desktop e ao celular em pé:
+  só mudam distâncias, duração e o toque do mouse (que só existe com mouse).
+*/
+function buildScene(el, { mobile, jump }) {
+  const q = (sel) => el.querySelector(sel);
+  const caps = gsap.utils.toArray(".rs-cap", el);
+  const nodes = gsap.utils.toArray(".rs-node", el);
+  const fill = q(".rs-rail-fill i");
+  const L = q(".rs-laptop"), T = q(".rs-tablet"), P = q(".rs-phone");
+  const depths = [L, T, P].map((d) => d.querySelector(".rs-depth"));
+  const setFill = gsap.quickSetter(fill, "scaleX");
+
+  el.classList.add("rs-pinned");
+  if (mobile) el.classList.add("rs-m");
+
+  gsap.set([L, T, P], { transformPerspective: 1600 });
+  gsap.set(L, { autoAlpha: 0, y: mobile ? 46 : 70, scale: 0.94, rotationY: mobile ? 10 : 14 });
+  gsap.set(T, { autoAlpha: 0, x: mobile ? -34 : -90, rotationY: mobile ? 16 : 20 });
+  // No celular o aparelho abre sozinho, grande e no centro, e depois encolhe até o seu lugar quando os
+  // outros chegam. Ele já nasce no tamanho grande (--pw maior no CSS) e só diminui: assim a captura
+  // fica nítida, em vez de uma imagem pequena esticada.
+  gsap.set(P, mobile
+    ? { autoAlpha: 0, y: 64, scale: 1, xPercent: -73.5, rotationX: -10, transformOrigin: "100% 100%" }
+    : { autoAlpha: 0, y: 90, scale: 1.12, xPercent: 0, rotationX: -10, transformOrigin: "50% 100%" });
+  gsap.set(caps, { autoAlpha: 0, y: 24 });
+  gsap.set(depths, { transformPerspective: 1400, rotationY: -8, rotationX: 2 });
+  setFill(0);
+
+  let step = -1;
+  const setStep = (n) => {
+    if (n === step) return;
+    step = n;
+    el.dataset.step = String(n);
+    nodes.forEach((b, i) => {
+      b.setAttribute("aria-current", i === n ? "true" : "false");
+      b.classList.toggle("done", i < n);
+    });
+  };
+  setStep(0);
+
+  const tl = gsap.timeline({
+    defaults: { ease: "power2.inOut" },
+    // O trilho lê o tempo da própria timeline (já suavizado pelo scrub), então anda junto com o texto.
+    onUpdate() {
+      const lb = this.labels;
+      if (lb.s2 === undefined) return;
+      const t = this.time();
+      setStep(t >= lb.s2 ? 2 : t >= lb.s1 ? 1 : 0);
+      setFill(gsap.utils.clamp(0, 1, (t - lb.s0) / (lb.s2 - lb.s0)));
+    },
+    scrollTrigger: {
+      trigger: q(".rs-pin"), start: "top top", end: mobile ? "+=210%" : "+=240%",
+      pin: true, scrub: mobile ? 0.8 : 0.6, anticipatePin: 1, invalidateOnRefresh: true,
+    },
+  });
+
+  tl.to(P, { autoAlpha: 1, y: 0, rotationX: 0, duration: 1 }, 0)
+    .to(caps[0], { autoAlpha: 1, y: 0, duration: 0.6 }, 0.25)
+    .addLabel("s0", 0.25)
+    .to(caps[0], { autoAlpha: 0, y: -24, duration: 0.5 }, 1.9)
+    .to(T, { autoAlpha: 1, x: 0, rotationY: 0, duration: 1 }, 1.9)
+    .to(P, mobile ? { scale: 0.667, xPercent: 0, duration: 1 } : { scale: 1, duration: 1 }, 1.9)
+    .to(caps[1], { autoAlpha: 1, y: 0, duration: 0.6 }, 2.2)
+    .addLabel("s1", 2.2)
+    .to(caps[1], { autoAlpha: 0, y: -24, duration: 0.5 }, 3.9)
+    .to(L, { autoAlpha: 1, y: 0, scale: 1, rotationY: 0, duration: 1.1 }, 3.9)
+    .to(caps[2], { autoAlpha: 1, y: 0, duration: 0.6 }, 4.2)
+    .addLabel("s2", 4.2)
+    .to({}, { duration: 0.8 }, 4.8);
+
+  // Toque no nome de um aparelho leva a rolagem direto para aquela etapa.
+  jump.current = (i) => {
+    const st = tl.scrollTrigger;
+    const t = tl.labels[`s${i}`] + 0.95;
+    window.scrollTo({ top: st.start + (t / tl.duration()) * (st.end - st.start), behavior: "smooth" });
+  };
+
+  let off = () => {};
+  if (mobile) {
+    // Sem mouse: a "câmera" contorna os aparelhos devagar enquanto a rolagem avança.
+    tl.fromTo(depths, { rotationY: -9 }, { rotationY: -2, ease: "none", duration: tl.duration() }, 0);
+  } else if (window.matchMedia("(hover: hover)").matches) {
+    // Com mouse: inclinação 3D acompanha o cursor, cada aparelho em uma profundidade.
+    const stage = q(".rs-stage");
+    const layers = [[L, 0.8, 6], [T, 1.2, 12], [P, 1.6, 20]].map(([dev, m, px]) => {
+      const d = dev.querySelector(".rs-depth");
+      return {
+        m, px,
+        ry: gsap.quickTo(d, "rotationY", { duration: 1, ease: "power3.out" }),
+        rx: gsap.quickTo(d, "rotationX", { duration: 1, ease: "power3.out" }),
+        x: gsap.quickTo(d, "x", { duration: 1, ease: "power3.out" }),
+      };
+    });
+    const move = (e) => {
+      const r = stage.getBoundingClientRect();
+      const nx = (e.clientX - r.left) / r.width - 0.5;
+      const ny = (e.clientY - r.top) / r.height - 0.5;
+      layers.forEach((o) => { o.ry(-8 + nx * 14 * o.m); o.rx(2 - ny * 8 * o.m); o.x(nx * o.px); });
+    };
+    const leave = () => layers.forEach((o) => { o.ry(-8); o.rx(2); o.x(0); });
+    stage.addEventListener("pointermove", move);
+    stage.addEventListener("pointerleave", leave);
+    off = () => { stage.removeEventListener("pointermove", move); stage.removeEventListener("pointerleave", leave); };
+  }
+
+  return () => {
+    off();
+    jump.current = null;
+    el.classList.remove("rs-pinned", "rs-m");
+    delete el.dataset.step;
+    nodes.forEach((b) => { b.classList.remove("done"); b.removeAttribute("aria-current"); });
+  };
+}
+
 export default function Responsive() {
   const root = useRef(null);
+  const jump = useRef(null);
   const [id, setId] = useState("brasa");
   const s = SITES.find((x) => x.id === id) || SITES[0];
 
@@ -69,68 +187,16 @@ export default function Responsive() {
     const el = root.current;
     if (!el) return;
     const mm = gsap.matchMedia();
+    const calm = "(prefers-reduced-motion: no-preference)";
 
-    // Desktop: cena fixa na tela, os aparelhos entram conforme a rolagem.
-    mm.add("(min-width: 1024px) and (min-height: 640px) and (prefers-reduced-motion: no-preference)", () => {
-      el.classList.add("rs-pinned");
-      const q = (sel) => el.querySelector(sel);
-      const [c0, c1, c2] = el.querySelectorAll(".rs-cap");
-      const L = q(".rs-laptop"), T = q(".rs-tablet"), P = q(".rs-phone");
+    // Desktop: cena fixa na tela.
+    mm.add(`(min-width: 1024px) and (min-height: 640px) and ${calm}`, () => buildScene(el, { mobile: false, jump }));
 
-      gsap.set([L, T, P], { transformPerspective: 1600 });
-      gsap.set(L, { autoAlpha: 0, y: 70, scale: 0.94, rotationY: 14 });
-      gsap.set(T, { autoAlpha: 0, x: -90, rotationY: 20 });
-      gsap.set(P, { autoAlpha: 0, y: 90, scale: 1.12, rotationX: -10, transformOrigin: "50% 100%" });
-      gsap.set([c0, c1, c2], { autoAlpha: 0, y: 24 });
+    // Celular e tablet em pé: a mesma cena fixa, com o texto logo abaixo dos aparelhos.
+    mm.add(`(max-width: 1023px) and (orientation: portrait) and (min-height: 540px) and ${calm}`, () => buildScene(el, { mobile: true, jump }));
 
-      const tl = gsap.timeline({
-        defaults: { ease: "power2.inOut" },
-        scrollTrigger: { trigger: q(".rs-pin"), start: "top top", end: "+=240%", pin: true, scrub: 0.6, anticipatePin: 1 },
-      });
-      tl.to(P, { autoAlpha: 1, y: 0, rotationX: 0, duration: 1 })
-        .to(c0, { autoAlpha: 1, y: 0, duration: 0.6 }, 0.2)
-        .to({}, { duration: 0.7 })
-        .to(c0, { autoAlpha: 0, y: -24, duration: 0.5 })
-        .to(T, { autoAlpha: 1, x: 0, rotationY: 0, duration: 1 }, "<")
-        .to(P, { scale: 1, duration: 1 }, "<")
-        .to(c1, { autoAlpha: 1, y: 0, duration: 0.6 }, "<0.3")
-        .to({}, { duration: 0.7 })
-        .to(c1, { autoAlpha: 0, y: -24, duration: 0.5 })
-        .to(L, { autoAlpha: 1, y: 0, scale: 1, rotationY: 0, duration: 1.1 }, "<")
-        .to(c2, { autoAlpha: 1, y: 0, duration: 0.6 }, "<0.3")
-        .to({}, { duration: 0.8 });
-      tl.to(q(".rs-prog i"), { scaleY: 1, ease: "none", duration: tl.duration() }, 0);
-
-      // Inclinação 3D que acompanha o mouse; cada aparelho se move um pouco diferente (profundidade)
-      let off = () => {};
-      if (window.matchMedia("(hover: hover)").matches) {
-        const stage = q(".rs-stage");
-        const layers = [[L, 0.8, 6], [T, 1.2, 12], [P, 1.6, 20]].map(([dev, m, px]) => {
-          const d = dev.querySelector(".rs-depth");
-          gsap.set(d, { transformPerspective: 1400, rotationY: -8, rotationX: 2 });
-          const o = { m, px };
-          o.ry = gsap.quickTo(d, "rotationY", { duration: 1, ease: "power3.out" });
-          o.rx = gsap.quickTo(d, "rotationX", { duration: 1, ease: "power3.out" });
-          o.x = gsap.quickTo(d, "x", { duration: 1, ease: "power3.out" });
-          return o;
-        });
-        const move = (e) => {
-          const r = stage.getBoundingClientRect();
-          const nx = (e.clientX - r.left) / r.width - 0.5;
-          const ny = (e.clientY - r.top) / r.height - 0.5;
-          layers.forEach((o) => { o.ry(-8 + nx * 14 * o.m); o.rx(2 - ny * 8 * o.m); o.x(nx * o.px); });
-        };
-        const leave = () => layers.forEach((o) => { o.ry(-8); o.rx(2); o.x(0); });
-        stage.addEventListener("pointermove", move);
-        stage.addEventListener("pointerleave", leave);
-        off = () => { stage.removeEventListener("pointermove", move); stage.removeEventListener("pointerleave", leave); };
-      }
-
-      return () => { off(); el.classList.remove("rs-pinned"); };
-    });
-
-    // Celular e tablet: sem fixar a tela, os aparelhos entram em sequência.
-    mm.add("(max-width: 1023px) and (prefers-reduced-motion: no-preference)", () => {
+    // Celular deitado ou tela muito baixa: sem fixar, os aparelhos entram em sequência.
+    mm.add(`(max-width: 1023px) and (orientation: landscape) and ${calm}, (max-width: 1023px) and (max-height: 539px) and ${calm}`, () => {
       gsap.from(el.querySelectorAll(".rs-dev"), {
         autoAlpha: 0, y: 60, duration: 1, stagger: 0.18, ease: "power3.out",
         scrollTrigger: { trigger: el.querySelector(".rs-stage"), start: "top 80%", once: true },
@@ -138,6 +204,26 @@ export default function Responsive() {
     });
 
     return () => mm.revert();
+  }, []);
+
+  // Pausa as animações contínuas quando a seção sai da tela e aquece as capturas em tempo ocioso.
+  useEffect(() => {
+    const el = root.current;
+    if (!el || typeof IntersectionObserver === "undefined") return;
+    let warmed = false;
+    const io = new IntersectionObserver(([e]) => {
+      el.classList.toggle("rs-off", !e.isIntersecting);
+      if (e.isIntersecting && !warmed) {
+        warmed = true;
+        if (navigator.connection?.saveData) return;
+        const idle = window.requestIdleCallback || ((f) => setTimeout(f, 500));
+        const touch = window.matchMedia("(hover: none)").matches;
+        // No toque, só as capturas leves do celular; o resto carrega ao escolher o projeto.
+        idle(() => SITES.forEach((x) => preload(x.id, touch ? ["phone"] : undefined)));
+      }
+    }, { rootMargin: "300px 0px" });
+    io.observe(el);
+    return () => io.disconnect();
   }, []);
 
   return (
@@ -164,19 +250,30 @@ export default function Responsive() {
                 </article>
               ))}
             </div>
-            <div className="rs-prog" aria-hidden="true"><i /></div>
+
+            <div className="rs-rail" role="group" aria-label="Versões da página">
+              <div className="rs-rail-fill" aria-hidden="true"><i /></div>
+              {STEPS.map(([n, tag], i) => {
+                const [name, px] = tag.split(" · ");
+                return (
+                  <button key={n} type="button" className="rs-node" aria-label={`Ver a versão ${name}, ${px}`} onClick={() => jump.current?.(i)}>
+                    {name}<small>{px}</small>
+                  </button>
+                );
+              })}
+            </div>
 
             <div className="rs-tabs-wrap">
               <small>Veja cada projeto em três telas</small>
               <div className="rs-tabs" role="tablist" aria-label="Projetos">
                 {SITES.map((x) => (
                   <button
-                    key={x.id} type="button" role="tab" aria-selected={x.id === id}
-                    className={x.id === id ? "on" : ""} onClick={() => setId(x.id)}
+                    key={x.id} type="button" role="tab" aria-selected={x.id === id} aria-label={x.tab}
+                    className={x.id === id ? "on" : ""} onClick={() => { preload(x.id); setId(x.id); }}
                     onPointerEnter={() => preload(x.id)} onFocus={() => preload(x.id)}
                     style={{ "--tc": x.glow, "--tcx": x.tabtx }}
                   >
-                    {x.tab}
+                    <span className="rs-t-l">{x.tab}</span><span className="rs-t-s">{x.short}</span>
                   </button>
                 ))}
               </div>
