@@ -249,3 +249,38 @@ h1, h2, h3, h4 { font-family: var(--font-sora), Inter, system-ui, sans-serif; li
 @media (prefers-reduced-motion: reduce) {
   .thread { transform: none; } .progress { display: none; } .sec::before { transform: translateX(-50%) scaleX(1); } .hl { background-size: 100% 2px; }
 }
+
+/* ============================================================
+   Seção responsiva: acabamento elegante e profundidade 3D
+   ============================================================ */
+
+/* Textos na cor da seção (violeta), sem degradê brilhante */
+.rs-pill { display: inline-flex; align-items: center; gap: 14px; padding: 0; border: 0; background: none; color: var(--mut); font: 600 12px var(--font-inter), sans-serif; letter-spacing: 0.16em; text-transform: uppercase; }
+.rs-pill::before { content: ""; width: 28px; height: 1px; background: var(--acc); }
+.rs-num { background: none; color: var(--acc); -webkit-text-fill-color: var(--acc); }
+.rs-cap small { color: var(--acc); }
+.rs-prog i { background: var(--acc); }
+.rs-visit, .rs-end p a, .rs-end small a { color: var(--acc); }
+.rs-visit:hover { border-bottom-color: var(--acc); }
+
+/* Brilho de fundo bem mais contido: só uma atmosfera na cor do projeto */
+.rs-glow { inset: 16% 10%; background: radial-gradient(closest-side, color-mix(in srgb, var(--s-glow) 20%, transparent), transparent 72%); filter: blur(64px); opacity: 0.6; }
+
+/* Sombra de chão sob os aparelhos */
+.rs-floor { position: absolute; left: 4%; right: 0; bottom: -4%; z-index: 0; height: 10%; border-radius: 50%; background: radial-gradient(closest-side, rgba(0, 0, 0, 0.55), transparent); filter: blur(14px); pointer-events: none; }
+
+/* Molduras em titânio escuro, com luz só na borda e sombra profunda */
+.rs-frame { background: linear-gradient(145deg, #cfd6e4, #5a647c 38%, #1d2438 72%, #8a94ab); box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.07), 0 46px 70px -38px rgba(0, 0, 0, 0.75), 0 0 44px -30px color-mix(in srgb, var(--s-glow) 50%, transparent); }
+.rs-fit::after { content: ""; position: absolute; inset: 0; z-index: 2; pointer-events: none; background: linear-gradient(115deg, rgba(255, 255, 255, 0.08), transparent 34%); }
+
+/* Profundidade: cada aparelho repousa levemente girado (o GSAP ajusta com o mouse) */
+.rs-depth { transform: perspective(1400px) rotateY(-8deg) rotateX(2deg); transform-origin: 50% 60%; will-change: transform; }
+
+/* Rótulos dos aparelhos mais discretos */
+.rs-chip { padding: 3px 11px; background: color-mix(in srgb, var(--bg) 70%, transparent); color: var(--mut); font: 600 10.5px var(--font-inter), sans-serif; letter-spacing: 0.1em; text-transform: uppercase; }
+
+/* Abas: contorno fino e um ponto da cor do projeto, sem bloco chapado */
+.rs-tabs button { display: inline-flex; align-items: center; gap: 9px; background: transparent; }
+.rs-tabs button::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--tc); opacity: 0.85; }
+.rs-tabs button:hover { border-color: color-mix(in srgb, var(--tc) 60%, var(--bd)); }
+.rs-tabs button.on { background: color-mix(in srgb, var(--tc) 13%, var(--card)); border-color: color-mix(in srgb, var(--tc) 70%, transparent); color: var(--tx); box-shadow: none; }

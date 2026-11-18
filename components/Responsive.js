@@ -40,7 +40,7 @@ function Device({ d, s }) {
   return (
     <div className={`rs-dev rs-${d.key}`} aria-hidden="true">
       <span className="rs-chip">{d.label} · {d.px}</span>
-      <div className="rs-float">
+      <div className="rs-depth"><div className="rs-float">
         <div className="rs-frame">
           <div className="rs-bz">
             {d.key === "laptop" && <div className="rs-bar"><u /><u /><u /><em>{s.host}</em></div>}
@@ -54,6 +54,7 @@ function Device({ d, s }) {
           </div>
         </div>
         {d.key === "laptop" && <div className="rs-base" />}
+        </div>
       </div>
     </div>
   );
@@ -76,30 +77,56 @@ export default function Responsive() {
       const [c0, c1, c2] = el.querySelectorAll(".rs-cap");
       const L = q(".rs-laptop"), T = q(".rs-tablet"), P = q(".rs-phone");
 
-      gsap.set(L, { autoAlpha: 0, y: 70, scale: 0.94 });
-      gsap.set(T, { autoAlpha: 0, x: -90 });
-      gsap.set(P, { autoAlpha: 0, y: 90, scale: 1.12, transformOrigin: "50% 100%" });
+      gsap.set([L, T, P], { transformPerspective: 1600 });
+      gsap.set(L, { autoAlpha: 0, y: 70, scale: 0.94, rotationY: 14 });
+      gsap.set(T, { autoAlpha: 0, x: -90, rotationY: 20 });
+      gsap.set(P, { autoAlpha: 0, y: 90, scale: 1.12, rotationX: -10, transformOrigin: "50% 100%" });
       gsap.set([c0, c1, c2], { autoAlpha: 0, y: 24 });
 
       const tl = gsap.timeline({
         defaults: { ease: "power2.inOut" },
         scrollTrigger: { trigger: q(".rs-pin"), start: "top top", end: "+=240%", pin: true, scrub: 0.6, anticipatePin: 1 },
       });
-      tl.to(P, { autoAlpha: 1, y: 0, duration: 1 })
+      tl.to(P, { autoAlpha: 1, y: 0, rotationX: 0, duration: 1 })
         .to(c0, { autoAlpha: 1, y: 0, duration: 0.6 }, 0.2)
         .to({}, { duration: 0.7 })
         .to(c0, { autoAlpha: 0, y: -24, duration: 0.5 })
-        .to(T, { autoAlpha: 1, x: 0, duration: 1 }, "<")
+        .to(T, { autoAlpha: 1, x: 0, rotationY: 0, duration: 1 }, "<")
         .to(P, { scale: 1, duration: 1 }, "<")
         .to(c1, { autoAlpha: 1, y: 0, duration: 0.6 }, "<0.3")
         .to({}, { duration: 0.7 })
         .to(c1, { autoAlpha: 0, y: -24, duration: 0.5 })
-        .to(L, { autoAlpha: 1, y: 0, scale: 1, duration: 1.1 }, "<")
+        .to(L, { autoAlpha: 1, y: 0, scale: 1, rotationY: 0, duration: 1.1 }, "<")
         .to(c2, { autoAlpha: 1, y: 0, duration: 0.6 }, "<0.3")
         .to({}, { duration: 0.8 });
       tl.to(q(".rs-prog i"), { scaleY: 1, ease: "none", duration: tl.duration() }, 0);
 
-      return () => el.classList.remove("rs-pinned");
+      // Inclinação 3D que acompanha o mouse; cada aparelho se move um pouco diferente (profundidade)
+      let off = () => {};
+      if (window.matchMedia("(hover: hover)").matches) {
+        const stage = q(".rs-stage");
+        const layers = [[L, 0.8, 6], [T, 1.2, 12], [P, 1.6, 20]].map(([dev, m, px]) => {
+          const d = dev.querySelector(".rs-depth");
+          gsap.set(d, { transformPerspective: 1400, rotationY: -8, rotationX: 2 });
+          const o = { m, px };
+          o.ry = gsap.quickTo(d, "rotationY", { duration: 1, ease: "power3.out" });
+          o.rx = gsap.quickTo(d, "rotationX", { duration: 1, ease: "power3.out" });
+          o.x = gsap.quickTo(d, "x", { duration: 1, ease: "power3.out" });
+          return o;
+        });
+        const move = (e) => {
+          const r = stage.getBoundingClientRect();
+          const nx = (e.clientX - r.left) / r.width - 0.5;
+          const ny = (e.clientY - r.top) / r.height - 0.5;
+          layers.forEach((o) => { o.ry(-8 + nx * 14 * o.m); o.rx(2 - ny * 8 * o.m); o.x(nx * o.px); });
+        };
+        const leave = () => layers.forEach((o) => { o.ry(-8); o.rx(2); o.x(0); });
+        stage.addEventListener("pointermove", move);
+        stage.addEventListener("pointerleave", leave);
+        off = () => { stage.removeEventListener("pointermove", move); stage.removeEventListener("pointerleave", leave); };
+      }
+
+      return () => { off(); el.classList.remove("rs-pinned"); };
     });
 
     // Celular e tablet: sem fixar a tela, os aparelhos entram em sequência.
@@ -114,10 +141,10 @@ export default function Responsive() {
   }, []);
 
   return (
-    <section id="responsivo" ref={root} className="rs sec">
+    <section id="responsivo" ref={root} className="rs sec acc-v">
       <div className="rs-wrap">
         <div className="rs-head">
-          <span className="rs-pill rv">● Responsividade de verdade</span>
+          <span className="rs-pill rv">Responsividade de verdade</span>
           <h2 className="h2 rv">Uma página. <span className="g">Todas as telas.</span></h2>
           <p className="sub rv" style={{ marginBottom: 0 }}>
             Você acabou de ver os projetos no ar. Agora veja os mesmos sites em três tamanhos de tela: cada página nasce pensada para o
@@ -159,6 +186,7 @@ export default function Responsive() {
 
           <div className="rs-stage" role="img" aria-label={`Capturas reais do site ${s.tab} em celular, tablet e notebook`} style={{ "--s-glow": s.glow }}>
             <div className="rs-glow" />
+            <div className="rs-floor" />
             {DEVICES.map((d) => <Device key={d.key} d={d} s={s} />)}
           </div>
         </div>
