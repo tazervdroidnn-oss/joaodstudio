@@ -5,6 +5,7 @@ import Numbers from "@/components/Numbers";
 import Projects from "@/components/Projects";
 import Responsive from "@/components/Responsive";
 import Services from "@/components/Services";
+import Briefing from "@/components/Briefing";
 import Process from "@/components/Process";
 import { Cta, Footer } from "@/components/Footer";
 import Motion from "@/components/Motion";
@@ -27,12 +28,19 @@ export default function Home() {
         Seu cliente vai abrir no celular, no tablet ou no notebook. A página precisa <em className="hl">funcionar nos três</em>.
       </Bridge>
       <Responsive />
+      <Bridge n="04" label="Formato" acc="y">
+        Funcionar em todas as telas é o mínimo. O que muda o resultado é escolher o <em className="hl">formato certo</em> para o seu negócio.
+      </Bridge>
       <Services />
-      <Bridge n="04" label="Como" acc="g">
-        Se faz sentido para a sua marca, o caminho até a página no ar é curto: <em className="hl">quatro etapas</em>.
+      <Bridge n="05" label="Diagnóstico" acc="v">
+        Ainda não sabe qual é o seu? Responda quatro perguntas e veja o <em className="hl">diagnóstico na hora</em>.
+      </Bridge>
+      <Briefing />
+      <Bridge n="06" label="Como" acc="g">
+        Com o diagnóstico em mãos, o caminho até a página no ar tem <em className="hl">quatro etapas</em>.
       </Bridge>
       <Process />
-      <Bridge n="05" label="Sua vez" acc="h">
+      <Bridge n="07" label="Sua vez" acc="h">
         Cada dia sem uma página que convença é um cliente que <em className="hl">clicou e foi embora</em>.
       </Bridge>
       <Cta />

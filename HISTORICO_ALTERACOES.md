@@ -85,3 +85,16 @@ feat: seção Projects com entrada cinematográfica e microinterações
 - Número 01–04 discreto ao lado do título. Imagens, links, descrições e proporções inalterados. Cards saíram do .rv genérico do Motion.js.
 - app/globals.css: bloco novo no fim com prefixo pj- (nenhuma regra antiga alterada).
 - Respeita prefers-reduced-motion (sem animação). Testado: build OK; desktop 1440 px e celular 375 px sem rolagem lateral e sem erros no console.
+
+## 24/11/2026 - merge na main (9861e66) - autorizado pelo João
+- feat/cinematico publicada na main (fast-forward e2ccfd2..9861e66): letras GSAP, pontes, seção responsiva 3D e Projects cinematográfico.
+
+## 24/11/2026 - branch feat/briefing (só local, aguardando aprovação)
+feat: posicionamento em três formatos, briefing com diagnóstico, faixas claras e 3D
+- Hero: "O site certo para o que o seu negócio precisa vender." + landing pages, portfólios e vitrines; botão "Fazer o diagnóstico grátis" (#diagnostico). Título/descrição do site atualizados no layout.js.
+- Services virou "Formatos" em faixa clara (texto preto sobre creme): Landing page (laranja = ação), Portfólio (azul = confiança), Vitrine (vinho = desejo), com para quem, o que tem e exemplo no ar.
+- Nova seção Briefing.js (#diagnostico): 4 perguntas, resultado com formato indicado, estrutura da página, paleta pela psicologia das cores por nicho, ponto de atenção e envio pelo WhatsApp com mensagem pronta. Nada é salvo.
+- Process: textos específicos (Diagnóstico, Roteiro e cores, Design e desenvolvimento, No ar e ajustes), cards girando em 3D e linha que liga as etapas.
+- CTA final em faixa clara com botão preto; novo texto.
+- Pontes 04 a 07 reescritas para conectar as seções. Novo hook components/use3D.js (entrada 3D + inclinação no hover). config.js ganhou waLink().
+- Build OK; diagnóstico testado (vitrine, portfólio, landing de turismo e de serviço); sem rolagem lateral em 375 px.

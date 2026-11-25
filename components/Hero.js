@@ -10,18 +10,23 @@ export default function Hero() {
       <div className="wrap relative z-[2]" data-hero>
         <div className="grid items-center gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-6">
           <div className="order-2 text-center lg:order-1 lg:text-left">
-            <span className="hero-i mb-6 inline-block rounded-full border bg-card px-4 py-1.5 text-sm text-b2">● Criador de Landing Pages</span>
+            <span className="hero-i hero-kicker mb-6">Estúdio de presença digital</span>
             <h1 data-hero-title className="hero-i mx-auto max-w-[900px] text-[clamp(34px,5.4vw,64px)] font-extrabold lg:mx-0">
-              Transformo cliques em <span className="g">clientes</span> com landing pages de alto impacto.
+              O site certo para o que o seu negócio precisa <span className="g">vender</span>.
             </h1>
-            <p className="hero-i mx-auto my-6 mb-9 max-w-[580px] text-base text-mut md:text-lg lg:mx-0">
-              Design moderno, animações cinematográficas e estrutura pensada para converter. Sua página não precisa só ser bonita — precisa vender.
+            <p className="hero-i mx-auto my-6 max-w-[600px] text-base text-mut md:text-lg lg:mx-0">
+              Crio landing pages, portfólios e vitrines digitais sob medida. Antes do layout vem o diagnóstico: entendo quem é o seu cliente e o que ele precisa ver para chamar você.
             </p>
+            <ul className="hero-i hero-formats mx-auto mb-9 lg:mx-0" aria-label="Formatos de site">
+              <li style={{ "--fc": "#ff8a3d" }}><b>Landing page</b><span>para gerar contatos</span></li>
+              <li style={{ "--fc": "#4d7dff" }}><b>Portfólio</b><span>para provar autoridade</span></li>
+              <li style={{ "--fc": "#e0457f" }}><b>Vitrine</b><span>para mostrar e vender produtos</span></li>
+            </ul>
             <div className="hero-i flex flex-wrap justify-center gap-3.5 lg:justify-start">
               <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="btn btn-w">
                 <WaIcon /> Chamar no WhatsApp
               </a>
-              <a href="#projetos" className="btn btn-o">Ver projetos</a>
+              <a href="#diagnostico" className="btn btn-o">Fazer o diagnóstico grátis</a>
             </div>
           </div>
 
@@ -36,8 +41,8 @@ export default function Hero() {
                     src="/joao-d.jpg" alt="João D, criador de landing pages do João D Studio"
                     width="1080" height="1080" fetchPriority="high" decoding="async"
                   />
-                  <span className="hero-chip hero-chip-a">Design moderno</span>
-                  <span className="hero-chip hero-chip-b">Foco em conversão</span>
+                  <span className="hero-chip hero-chip-a">Sob medida</span>
+                  <span className="hero-chip hero-chip-b">Foco em resultado</span>
                 </div>
               </div>
             </div>

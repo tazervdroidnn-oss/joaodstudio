@@ -389,3 +389,115 @@ body { touch-action: pan-y pinch-zoom; }
 @media (hover: none) {
   .pj-arrow { opacity: 1; transform: none; }
 }
+
+/* ============================================================
+   Faixas claras (band-l): papel quente com texto preto
+   Psicologia das cores: o creme passa calma e sofisticação, o preto passa
+   autoridade e deixa as cores de cada formato (laranja = ação, azul = confiança,
+   vinho = desejo) com mais força. O contraste com o resto escuro marca as pausas.
+   ============================================================ */
+.band-l {
+  --bg: #f6f2ea; --bg2: #efe9dd; --card: #fffdf9; --tx: #0d0f14; --mut: #4b505c; --bd: rgba(13, 15, 20, 0.12);
+  --acc: #c2410c; --a1: #c2410c; --a2: #be185d; --b1: #1d4ed8; --b2: #1d4ed8;
+  background: var(--bg); color: var(--tx); color-scheme: light;
+}
+.band-l .card, .band-l .fm-card { color: var(--tx); }
+
+/* Rótulo acima dos títulos */
+.kicker, .hero-kicker { display: inline-flex; align-items: center; gap: 14px; margin-bottom: 18px; color: var(--acc); font: 700 12px var(--font-inter), sans-serif; letter-spacing: 0.16em; text-transform: uppercase; }
+.kicker::before, .hero-kicker::before { content: ""; width: 28px; height: 1px; background: var(--acc); }
+
+/* Botão preto (premium) */
+.btn-k { background: #0d0f14; color: #fff; box-shadow: 0 14px 34px -16px rgba(13, 15, 20, 0.7); }
+.band-l .cta-box .btn-k { background: #0d0f14; color: #fff; box-shadow: 0 14px 34px -16px rgba(13, 15, 20, 0.7); }
+.band-l .cta-box .btn-o { background: none; color: var(--tx); box-shadow: none; border: 1px solid var(--bd); }
+
+/* Chamada final em papel claro */
+.band-l .cta-box { background: radial-gradient(120% 140% at 50% 0%, #fffdf9, #efe8da); color: var(--tx); border: 1px solid var(--bd); box-shadow: 0 50px 100px -60px rgba(13, 15, 20, 0.45); }
+.band-l .cta-box::after { background: conic-gradient(from 0deg, transparent, rgba(194, 65, 12, 0.1), transparent 30%); }
+
+/* Hero: três formatos */
+.hero-formats { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; max-width: 640px; padding: 0; list-style: none; }
+.hero-formats li { display: flex; align-items: baseline; gap: 8px; padding: 9px 15px; border: 1px solid var(--bd); border-radius: 99px; background: color-mix(in srgb, var(--card) 70%, transparent); font-size: 14px; }
+.hero-formats li::before { content: ""; align-self: center; width: 8px; height: 8px; border-radius: 50%; background: var(--fc); box-shadow: 0 0 0 4px color-mix(in srgb, var(--fc) 18%, transparent); }
+.hero-formats b { color: var(--tx); font-weight: 700; }
+.hero-formats span { color: var(--mut); }
+@media (min-width: 1024px) { .hero-formats { justify-content: flex-start; } }
+
+/* Luz que segue o cursor nos cards 3D */
+.fx-card { position: relative; }
+.fx-card::after { content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none; border-radius: inherit; opacity: 0; transition: opacity 0.5s ease; background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 0%), color-mix(in srgb, var(--fc, var(--acc)) 11%, transparent), transparent 60%); }
+.fx-card:hover::after { opacity: 1; }
+.fx-card > * { position: relative; z-index: 1; }
+
+/* Formatos */
+.fm-card { display: flex; flex-direction: column; overflow: hidden; padding: 32px 28px 26px; border: 1px solid var(--bd); border-radius: 22px; background: var(--card); box-shadow: 0 1px 0 rgba(13, 15, 20, 0.04), 0 34px 60px -44px rgba(13, 15, 20, 0.45); }
+.fm-card::before { content: ""; position: absolute; inset: 0 0 auto 0; z-index: 2; height: 4px; background: var(--fc); }
+.fm-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 22px; }
+.fm-n { color: var(--fc); font: 700 13px var(--font-inter), sans-serif; letter-spacing: 0.14em; }
+.fm-goal { color: var(--mut); font-size: 12.5px; text-align: right; }
+.fm-goal b { color: var(--tx); }
+.fm-name { margin-bottom: 10px; font: 800 clamp(26px, 3vw, 32px) / 1.1 var(--font-sora), sans-serif; letter-spacing: -0.02em; }
+.fm-lead { margin-bottom: 8px; font-size: 16px; line-height: 1.55; }
+.fm-dl dt { margin-top: 16px; color: var(--fc); font: 700 11px var(--font-inter), sans-serif; letter-spacing: 0.14em; text-transform: uppercase; }
+.fm-dl dd { margin: 4px 0 0; color: var(--mut); font-size: 14.5px; }
+.fm-ex { display: flex; align-items: center; gap: 6px; margin-top: auto; padding-top: 20px; border-top: 1px solid var(--bd); color: var(--fc); font-size: 14px; font-weight: 600; text-decoration: none; }
+.fm-dl { margin-bottom: 22px; }
+.fm-ex span { transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.fm-ex:hover span, .fm-ex:focus-visible span { transform: translate(3px, -3px); }
+
+/* Processo: cards que giram como páginas e linha que liga as etapas */
+.pr-step { padding: 30px 26px; border: 1px solid var(--bd); border-radius: 22px; background: var(--card); transition: border-color 0.4s ease; }
+.pr-step:hover { border-color: var(--acc); }
+.pr-n { display: block; margin-bottom: 8px; color: var(--acc); font: 800 44px / 1 var(--font-sora), sans-serif; }
+.pr-line { position: absolute; top: 0; bottom: 0; left: 34px; width: 1px; pointer-events: none; }
+.pr-line i { display: block; width: 100%; height: 100%; transform-origin: top left; background: linear-gradient(var(--acc), color-mix(in srgb, var(--acc) 15%, transparent)); }
+@media (min-width: 1024px) {
+  .pr-line { top: 62px; bottom: auto; left: 0; right: 0; width: auto; height: 1px; }
+  .pr-line i { background: linear-gradient(90deg, var(--acc), color-mix(in srgb, var(--acc) 15%, transparent)); }
+}
+
+/* Briefing e diagnóstico */
+.dg-head { max-width: 780px; }
+.dg-panel { position: relative; overflow: hidden; max-width: 940px; padding: clamp(22px, 4vw, 44px); border: 1px solid var(--bd); border-radius: 28px; background: color-mix(in srgb, var(--card) 88%, transparent); box-shadow: 0 40px 90px -50px color-mix(in srgb, var(--acc) 55%, transparent); }
+.dg-bar { position: absolute; inset: 0 0 auto 0; height: 3px; background: var(--bd); }
+.dg-bar i { display: block; height: 100%; transform-origin: left; background: linear-gradient(90deg, var(--a1), var(--a2)); transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.dg-q { min-width: 0; margin: 0; padding: 0; border: 0; }
+.dg-q legend { width: 100%; margin-bottom: 22px; padding: 0; }
+.dg-count { display: block; margin-bottom: 10px; color: var(--acc); font: 700 12px var(--font-inter), sans-serif; letter-spacing: 0.16em; text-transform: uppercase; }
+.dg-title { font: 800 clamp(22px, 3vw, 32px) / 1.2 var(--font-sora), sans-serif; letter-spacing: -0.02em; outline: none; }
+.dg-title:focus-visible { outline: 2px solid var(--acc); outline-offset: 4px; }
+.dg-opts { display: grid; gap: 12px; }
+@media (min-width: 640px) { .dg-opts { grid-template-columns: 1fr 1fr; } }
+.dg-opt { position: relative; display: flex; align-items: flex-start; gap: 14px; padding: 16px 18px; border: 1px solid var(--bd); border-radius: 16px; background: color-mix(in srgb, var(--bg) 40%, transparent); cursor: pointer; transition: border-color 0.3s ease, background-color 0.3s ease, transform 0.3s ease; }
+.dg-opt:hover { border-color: color-mix(in srgb, var(--acc) 55%, var(--bd)); transform: translateY(-2px); }
+.dg-opt input { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+.dg-dot { flex: none; width: 18px; height: 18px; margin-top: 3px; border: 2px solid var(--mut); border-radius: 50%; transition: 0.3s ease; }
+.dg-opt input:checked + .dg-dot { border-color: var(--acc); background: var(--acc); box-shadow: inset 0 0 0 3px var(--card); }
+.dg-opt:has(input:checked) { border-color: var(--acc); background: color-mix(in srgb, var(--acc) 12%, transparent); }
+.dg-opt:has(input:focus-visible) { outline: 2px solid var(--acc); outline-offset: 2px; }
+.dg-txt b { display: block; color: var(--tx); font-weight: 600; }
+.dg-txt small { display: block; margin-top: 2px; color: var(--mut); font-size: 13px; }
+.dg-nav { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; margin-top: 26px; }
+.dg-back { padding: 12px 20px; border: 1px solid var(--bd); border-radius: 99px; background: none; color: var(--tx); font-weight: 600; cursor: pointer; }
+.dg-back:disabled { opacity: 0.35; cursor: default; }
+.dg-panel button.btn { border: 0; font: inherit; font-weight: 600; cursor: pointer; }
+.dg-panel .btn:disabled { opacity: 0.45; pointer-events: none; filter: grayscale(0.4); }
+.dg-format { color: var(--fc); }
+.dg-verdict p { max-width: 700px; margin-top: 12px; }
+.dg-cols { display: grid; gap: 16px; margin-top: 26px; }
+@media (min-width: 768px) { .dg-cols { grid-template-columns: 1.1fr 1fr; } }
+.dg-box { padding: 22px; border: 1px solid var(--bd); border-radius: 18px; background: color-mix(in srgb, var(--bg) 35%, transparent); }
+.dg-box h4 { margin-bottom: 14px; color: var(--fc); font: 700 12px var(--font-inter), sans-serif; letter-spacing: 0.14em; text-transform: uppercase; }
+.dg-list { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; counter-reset: d; }
+.dg-list li { display: flex; gap: 12px; font-size: 15px; counter-increment: d; }
+.dg-list li::before { content: counter(d, decimal-leading-zero); min-width: 20px; margin-top: 3px; color: var(--fc); font: 700 12px var(--font-inter), sans-serif; }
+.dg-cta { margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--bd); font-size: 14px; font-weight: 600; }
+.dg-swatches { display: flex; gap: 8px; margin-bottom: 14px; }
+.dg-swatches span { width: 44px; height: 44px; border-radius: 12px; box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.15), 0 8px 18px -10px rgba(0, 0, 0, 0.6); }
+.dg-send { margin-top: 22px; }
+.dg-name { display: block; max-width: 420px; }
+.dg-name span { display: block; margin-bottom: 6px; color: var(--mut); font-size: 13px; }
+.dg-name input { width: 100%; padding: 12px 16px; border: 1px solid var(--bd); border-radius: 12px; background: color-mix(in srgb, var(--bg) 60%, transparent); color: var(--tx); font: inherit; }
+.dg-name input:focus { outline: 2px solid var(--acc); outline-offset: 1px; }
+.dg-note { display: block; margin-top: 12px; color: var(--mut); font-size: 12.5px; }

@@ -5,9 +5,9 @@ const sora = Sora({ subsets: ["latin"], weight: ["400", "600", "800"], variable:
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const montserrat = Montserrat({ subsets: ["latin"], weight: ["500", "700", "800"], variable: "--font-montserrat" });
 
-const TITLE = "João D Studio — Landing Pages que Convertem";
+const TITLE = "João D Studio — Landing Pages, Portfólios e Vitrines";
 const DESC =
-  "Criador de landing pages com design moderno, animações cinematográficas e foco em conversão. Fale pelo WhatsApp.";
+  "Landing pages, portfólios e vitrines digitais sob medida, com diagnóstico do seu negócio, design cinematográfico e contato direto pelo WhatsApp.";
 
 export const metadata = {
   metadataBase: new URL("https://joaodstudio.vercel.app"),

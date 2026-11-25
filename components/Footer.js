@@ -3,18 +3,19 @@ import { WA_LINK, INSTAGRAM } from "./config";
 
 export function Cta() {
   return (
-    <section className="sec overflow-hidden text-center">
+    <section className="sec band-l overflow-hidden text-center">
       <div className="wrap">
         <div className="cta-box rv rounded-[32px] px-6 py-16 md:py-24">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/joao-d-256.jpg" alt="João D" width="96" height="96" loading="lazy" className="cta-avatar" />
-          <h2 data-split className="mb-4 text-[clamp(30px,5vw,52px)] font-extrabold">Vamos colocar sua marca em outro nível?</h2>
-          <p className="mx-auto mb-8 max-w-[520px] opacity-90">
-            Chame no WhatsApp e conte sobre o seu projeto. Sua próxima landing page pode começar hoje.
+          <h2 data-split className="mx-auto mb-4 max-w-[820px] text-[clamp(30px,5vw,52px)] font-extrabold">Seu cliente já está procurando. Falta ele <span className="g">encontrar você</span>.</h2>
+          <p className="mx-auto mb-8 max-w-[560px] text-mut">
+            Me chame no WhatsApp com o seu diagnóstico ou só com uma ideia. Na primeira conversa eu digo qual formato faz sentido para o seu negócio e como começar.
           </p>
           <div className="flex flex-wrap justify-center gap-3.5">
             <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="btn btn-w"><WaIcon /> Falar no WhatsApp</a>
-            <a href={INSTAGRAM} target="_blank" rel="noopener noreferrer" className="btn">@joaodstudio</a>
+            <a href="#diagnostico" className="btn btn-k">Fazer o diagnóstico</a>
+            <a href={INSTAGRAM} target="_blank" rel="noopener noreferrer" className="btn btn-o">@joaodstudio</a>
           </div>
         </div>
       </div>
