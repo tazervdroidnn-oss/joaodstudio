@@ -98,3 +98,10 @@ feat: posicionamento em três formatos, briefing com diagnóstico, faixas claras
 - CTA final em faixa clara com botão preto; novo texto.
 - Pontes 04 a 07 reescritas para conectar as seções. Novo hook components/use3D.js (entrada 3D + inclinação no hover). config.js ganhou waLink().
 - Build OK; diagnóstico testado (vitrine, portfólio, landing de turismo e de serviço); sem rolagem lateral em 375 px.
+
+## 24/11/2026 - feat/briefing: SEO (só local, aguardando aprovação)
+- Nova seção components/Seo.js (#seo) entre Formatos e Diagnóstico: pesquisa simulada no Google que se digita sozinha (4 exemplos), explicação simples de SEO e palavra-chave, aviso honesto de médio prazo, 6 itens do que é feito em cada página e exemplos de palavras-chave por tipo de negócio.
+- Diagnóstico agora mostra "Palavras-chave para começar no Google" conforme o nicho.
+- Processo cita SEO e o aviso ao Google na publicação. Pontes renumeradas (05 Google, 06 Diagnóstico, 07 Como, 08 Sua vez).
+- SEO do próprio site: palavras-chave e canonical no layout.js, dados estruturados schema.org (ProfessionalService), app/robots.js e app/sitemap.js.
+- Exemplos com cidades do Maranhão (Imperatriz, São Luís): trocar se o João preferir outra região.

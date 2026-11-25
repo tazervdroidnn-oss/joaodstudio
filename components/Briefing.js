@@ -5,6 +5,7 @@ import gsap from "gsap";
 import WaIcon from "./WaIcon";
 import { waLink } from "./config";
 import { use3D } from "./use3D";
+import { KEYWORDS } from "./Seo";
 
 // ------------------------------------------------------------
 // Perguntas do briefing. Cada resposta soma pontos para um formato:
@@ -247,6 +248,8 @@ export default function Briefing() {
                     <p className="text-mut">{result.palette.text}</p>
                     <h4 className="mt-5">Primeiro ponto de atenção</h4>
                     <p className="text-mut">{result.attention}</p>
+                    <h4 className="mt-5">Palavras-chave para começar no Google</h4>
+                    <ul className="dg-kw">{KEYWORDS[answers.nicho].map((w) => <li key={w}>{w}</li>)}</ul>
                   </div>
                 </div>
 

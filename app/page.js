@@ -6,6 +6,7 @@ import Projects from "@/components/Projects";
 import Responsive from "@/components/Responsive";
 import Services from "@/components/Services";
 import Briefing from "@/components/Briefing";
+import Seo from "@/components/Seo";
 import Process from "@/components/Process";
 import { Cta, Footer } from "@/components/Footer";
 import Motion from "@/components/Motion";
@@ -32,15 +33,19 @@ export default function Home() {
         Funcionar em todas as telas é o mínimo. O que muda o resultado é escolher o <em className="hl">formato certo</em> para o seu negócio.
       </Bridge>
       <Services />
-      <Bridge n="05" label="Diagnóstico" acc="v">
-        Ainda não sabe qual é o seu? Responda quatro perguntas e veja o <em className="hl">diagnóstico na hora</em>.
+      <Bridge n="05" label="Google" acc="c">
+        Um site bonito que ninguém encontra não vende. Por isso cada página já sai preparada para <em className="hl">aparecer nas pesquisas</em>.
+      </Bridge>
+      <Seo />
+      <Bridge n="06" label="Diagnóstico" acc="v">
+        Formato, palavras-chave, cores. Responda quatro perguntas e veja o <em className="hl">diagnóstico do seu site</em> na hora.
       </Bridge>
       <Briefing />
-      <Bridge n="06" label="Como" acc="g">
+      <Bridge n="07" label="Como" acc="g">
         Com o diagnóstico em mãos, o caminho até a página no ar tem <em className="hl">quatro etapas</em>.
       </Bridge>
       <Process />
-      <Bridge n="07" label="Sua vez" acc="h">
+      <Bridge n="08" label="Sua vez" acc="h">
         Cada dia sem uma página que convença é um cliente que <em className="hl">clicou e foi embora</em>.
       </Bridge>
       <Cta />

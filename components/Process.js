@@ -10,8 +10,8 @@ gsap.registerPlugin(ScrollTrigger);
 const steps = [
   ["Diagnóstico", "Você responde o briefing e eu analiso o seu negócio, o seu público e quem disputa o mesmo cliente. Saio com o formato certo e o objetivo da página."],
   ["Roteiro e cores", "Defino a ordem das seções, os textos que respondem às dúvidas do cliente e a paleta pela psicologia das cores da sua marca."],
-  ["Design e desenvolvimento", "Construo começando pelo celular, com animações cinematográficas, carregamento rápido e WhatsApp com mensagem pronta."],
-  ["No ar e ajustes", "Publico, testo no celular, no tablet e no computador e ajusto os detalhes com você antes de divulgar."],
+  ["Design e desenvolvimento", "Construo começando pelo celular, com animações cinematográficas, SEO, carregamento rápido e WhatsApp com mensagem pronta."],
+  ["No ar e ajustes", "Publico, aviso o Google que a página existe, testo no celular, no tablet e no computador e ajusto os detalhes com você."],
 ];
 
 export default function Process() {
