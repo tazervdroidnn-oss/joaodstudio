@@ -14,6 +14,7 @@
    24/11 22:40 - FEITO (1df1559, feat/cinematico, SÓ LOCAL, sem push): seção Projects com entrada cinematográfica GSAP (stagger, clip-path mask reveal, escala) e microinterações no hover. Build OK, testado em 1440 px e 375 px. Aguardando o João autorizar o push para gerar a prévia da Vercel.
    24/11 - feat/cinematico PUBLICADA na main (9861e66), autorizado pelo João.
   ► 24/11 23:22 - feat/briefing PUBLICADA na main (autorizado pelo João): hero com 3 formatos, diagnóstico (sem cores, leva ao orçamento), SEO enxuto, Formatos e CTA em faixa clara, entradas 3D, ordem para o Reels, Mansô e Lahatua no lugar de Valentim e NASA.
+  ► 24/11 23:37 - feat/carrossel PUBLICADA na main (144cad7): Projetos em carrossel no celular, Responsiva só no computador. Conferido no ar.
   Próximo (aguardando o João): 1) nicho do anúncio (pesca/turismo ou geral) para ajustar o título do hero; 2) depoimentos reais de clientes; 3) ID do Pixel da Meta para medir cliques no WhatsApp e diagnósticos.
   Se cair a sessão: trabalhar a partir da main, criar branch nova. Não mexer na main sem confirmação do João.
 - Nenhuma tarefa de código em andamento. Seção responsiva publicada na main.
