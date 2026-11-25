@@ -13,9 +13,9 @@
   ► 18/11 00:05 — FEITO e commitado (46605fc, feat/cinematico, build OK, testado em 390 px com navegador de teste): seção responsiva no celular com aparelhos fixos na rolagem (celular abre grande e encolhe, depois tablet e laptop), trilho Mobile/Tablet/Desktop clicável, abas de projeto, capturas reais por projeto (public/sites/*.webp). Ajuste final: mais espaço embaixo para o botão flutuante do WhatsApp não cobrir a aba NASA e mais respiro entre o laptop e o cabeçalho. Sem rolagem lateral. Falta o João conferir a prévia da Vercel no celular e no desktop.
    24/11 22:40 - FEITO (1df1559, feat/cinematico, SÓ LOCAL, sem push): seção Projects com entrada cinematográfica GSAP (stagger, clip-path mask reveal, escala) e microinterações no hover. Build OK, testado em 1440 px e 375 px. Aguardando o João autorizar o push para gerar a prévia da Vercel.
    24/11 - feat/cinematico PUBLICADA na main (9861e66), autorizado pelo João.
-  ► 24/11 23:30 - NOVA branch feat/briefing (só local): hero com landing/portfólio/vitrine, Formatos em faixa clara, Briefing com diagnóstico (#diagnostico), Process 3D, CTA claro, pontes reescritas. Build OK. Aguardando o João ver em localhost:3123 e autorizar push/merge.
-  Próximo: o João confere; ajustar o que pedir; só então mesclar na main (com confirmação).
-  Se cair a sessão: git switch feat/briefing, ler este bloco. Não mexer na main sem confirmação do João.
+  ► 24/11 23:22 - feat/briefing PUBLICADA na main (autorizado pelo João): hero com 3 formatos, diagnóstico (sem cores, leva ao orçamento), SEO enxuto, Formatos e CTA em faixa clara, entradas 3D, ordem para o Reels, Mansô e Lahatua no lugar de Valentim e NASA.
+  Próximo (aguardando o João): 1) nicho do anúncio (pesca/turismo ou geral) para ajustar o título do hero; 2) depoimentos reais de clientes; 3) ID do Pixel da Meta para medir cliques no WhatsApp e diagnósticos.
+  Se cair a sessão: trabalhar a partir da main, criar branch nova. Não mexer na main sem confirmação do João.
 - Nenhuma tarefa de código em andamento. Seção responsiva publicada na main.
 - Hero com retrato e capturas reais publicados na main (aguardando conferência do João no site oficial).
 
