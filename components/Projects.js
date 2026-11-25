@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -35,6 +35,46 @@ const projects = [
 
 export default function Projects() {
   const root = useRef(null);
+  const grid = useRef(null);
+  const [active, setActive] = useState(0);
+  const [swiped, setSwiped] = useState(false);
+
+  // Carrossel do celular: descobre qual card está na tela e some o aviso depois do 1º arraste
+  const onGridScroll = () => {
+    const g = grid.current;
+    if (!g || !g.firstElementChild) return;
+    const step = g.firstElementChild.getBoundingClientRect().width + parseFloat(getComputedStyle(g).columnGap || 0);
+    setActive(Math.round(g.scrollLeft / step));
+    if (g.scrollLeft > 40) setSwiped(true);
+  };
+  const goTo = (i) => {
+    const g = grid.current;
+    const card = g?.children[i];
+    if (card) g.scrollTo({ left: card.offsetLeft - g.firstElementChild.offsetLeft, behavior: "smooth" });
+  };
+
+  // Uma deslizada leve e automática, só para mostrar que dá para arrastar (celular)
+  useEffect(() => {
+    const g = grid.current;
+    if (!g || !window.matchMedia("(max-width: 767px)").matches) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    let done = false;
+    const io = new IntersectionObserver(([e]) => {
+      if (!e.isIntersecting || done) return;
+      done = true;
+      io.disconnect();
+      setTimeout(() => {
+        if (g.scrollLeft > 10) return;
+        g.style.scrollSnapType = "none";
+        gsap.to(g, {
+          scrollLeft: 90, duration: 0.55, ease: "power2.out", yoyo: true, repeat: 1, repeatDelay: 0.25,
+          onComplete: () => { g.style.scrollSnapType = ""; },
+        });
+      }, 1800);
+    }, { threshold: 0.6 });
+    io.observe(g);
+    return () => io.disconnect();
+  }, []);
 
   useEffect(() => {
     const section = root.current;
@@ -123,8 +163,16 @@ export default function Projects() {
     <section id="projetos" className="sec acc-m" ref={root}>
       <div className="wrap">
         <h2 className="h2" data-split>Projetos que <span className="g">já entreguei</span></h2>
-        <p className="sub rv">Sites reais, no ar. Passe o mouse (ou toque) na miniatura para ver a página rolando e clique para visitar.</p>
-        <div className="pj-grid grid grid-cols-1 gap-8 md:grid-cols-2">
+        <p className="sub rv">Sites reais, no ar, atendendo clientes pelo WhatsApp.</p>
+        <p className={`pj-hint${swiped ? " off" : ""}`} aria-hidden="true">
+          Arraste para o lado e veja os {projects.length} sites <span className="pj-hint-hand">→</span>
+        </p>
+        <div
+          ref={grid}
+          className="pj-grid grid grid-cols-1 gap-8 md:grid-cols-2"
+          onScroll={onGridScroll}
+          role="region" aria-label="Projetos (arraste para o lado no celular)" tabIndex={0}
+        >
           {projects.map((p, i) => (
             <div key={p.href} className="pj">
               <a href={p.href} target="_blank" rel="noopener noreferrer" className="shot pj-shot" aria-label={`Visitar ${p.title} (${p.host})`}>
@@ -150,6 +198,15 @@ export default function Projects() {
                 </div>
               </a>
             </div>
+          ))}
+        </div>
+        <div className="pj-dots" role="group" aria-label="Escolher projeto">
+          {projects.map((p, i) => (
+            <button
+              key={p.id} type="button" className={i === active ? "on" : ""}
+              aria-label={`Ver ${p.title}`} aria-current={i === active ? "true" : undefined}
+              onClick={() => goTo(i)}
+            />
           ))}
         </div>
       </div>

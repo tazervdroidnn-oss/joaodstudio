@@ -592,3 +592,33 @@ body { touch-action: pan-y pinch-zoom; }
   #projetos .pj-shot p { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; margin-bottom: 0; }
   #projetos .scr { aspect-ratio: 16 / 9; }
 }
+
+/* ============================================================
+   Projetos no celular: carrossel de arrastar com aviso e bolinhas.
+   A seção "Todas as telas" repete os mesmos sites, então fica só no computador.
+   ============================================================ */
+.pj-hint, .pj-dots { display: none; }
+@media (max-width: 767px) {
+  #projetos .sub { margin-bottom: 14px; }
+  .pj-hint { display: flex; align-items: center; gap: 8px; margin-bottom: 14px; color: var(--acc); font-size: 13.5px; font-weight: 600; transition: opacity 0.5s ease; }
+  .pj-hint.off { opacity: 0.35; }
+  .pj-hint-hand { display: inline-block; animation: pj-swipe 1.6s ease-in-out infinite; }
+  @keyframes pj-swipe { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(8px); } }
+
+  #projetos .pj-grid {
+    display: flex; gap: 14px; overflow-x: auto; overscroll-behavior-x: contain;
+    margin-inline: -4.35%; padding: 4px 4.35% 10px; scroll-padding-inline: 4.35%;
+    scroll-snap-type: x mandatory; touch-action: pan-x pan-y; scrollbar-width: none;
+  }
+  #projetos .pj-grid::-webkit-scrollbar { display: none; }
+  #projetos .pj { flex: 0 0 84%; scroll-snap-align: start; }
+  #projetos .pj-shot > .px-5 { padding: 12px 14px 14px; }
+  #projetos .pj-title { font-size: 16px; }
+
+  .pj-dots { display: flex; justify-content: center; gap: 8px; margin-top: 14px; }
+  .pj-dots button { width: 8px; height: 8px; padding: 0; border: 0; border-radius: 99px; background: var(--bd); cursor: pointer; transition: width 0.35s ease, background-color 0.35s ease; }
+  .pj-dots button.on { width: 24px; background: var(--acc); }
+
+  #responsivo { display: none; }
+}
+@media (max-width: 767px) and (prefers-reduced-motion: reduce) { .pj-hint-hand { animation: none; } }

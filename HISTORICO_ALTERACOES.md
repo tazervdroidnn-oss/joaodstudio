@@ -132,3 +132,8 @@ feat: posicionamento em três formatos, briefing com diagnóstico, faixas claras
 - Pedido do João: as cores ele define pela logo e pelo Instagram do cliente. Removida a paleta do resultado do diagnóstico (PALETTES).
 - Resultado: formato indicado + porquê, "O que a sua página vai ter", ponto de atenção e palavras-chave. Botão "Pedir orçamento de <formato>" e mensagem termina com "Quero um orçamento de <formato>."
 - Processo: etapa 2 virou "Roteiro e identidade" (cores tiradas da logo e do Instagram).
+
+## 24/11/2026 - branch feat/carrossel (só local, aguardando aprovação)
+- Projetos no celular (até 767 px) viraram carrossel de arrastar: um card por vez (84% da largura, ponta do próximo visível), scroll-snap, aviso "Arraste para o lado e veja os 4 sites →", bolinhas clicáveis e uma deslizada automática de demonstração quando a seção aparece. Sem emoji. Computador e tablet sem mudança.
+- Seção Responsiva escondida só no celular (repetia os mesmos 4 sites).
+- Celular: Projetos de 2,1 para 0,84 tela; site de 13,9 para 9,6 telas; diagnóstico começa na tela 2,5.
