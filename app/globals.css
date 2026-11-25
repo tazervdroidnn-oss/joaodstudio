@@ -357,3 +357,35 @@ body { touch-action: pan-y pinch-zoom; }
 /* Fora da tela, as animações contínuas param (bateria e fluidez) */
 .rs-off .rs-float, .rs-off .rs-shot { animation-play-state: paused; }
 @media (prefers-reduced-motion: reduce) { .rs-float, .rs-shot { animation: none; } }
+
+/* ============================================================
+   Seção Projetos: entrada cinematográfica e microinterações (prefixo pj-)
+   O efeito original de rolar a página na miniatura (.shot/.scr) continua igual.
+   ============================================================ */
+.pj { height: 100%; will-change: transform, opacity; }
+.pj-shot { position: relative; height: 100%; isolation: isolate; }
+.pj-shot:focus-visible { outline: 2px solid var(--acc); outline-offset: 4px; }
+.pj-media { will-change: transform; }
+.pj-in, .pj-in .pj-media { will-change: auto; }
+
+/* Luz suave que acompanha o cursor */
+.pj-glow {
+  position: absolute; inset: 0; z-index: 3; pointer-events: none; border-radius: inherit; opacity: 0;
+  background: radial-gradient(480px circle at var(--mx, 50%) var(--my, 0%), color-mix(in srgb, var(--acc) 13%, transparent), transparent 60%);
+  transition: opacity 0.5s ease;
+}
+.pj-shot:hover .pj-glow { opacity: 1; }
+
+/* Número, título e seta */
+.pj-title { display: flex; align-items: baseline; gap: 10px; }
+.pj-n { font: 600 11px var(--font-inter), sans-serif; letter-spacing: 0.1em; color: var(--acc); opacity: 0.85; }
+.pj-arrow { margin-left: auto; color: var(--acc); opacity: 0; transform: translate(-6px, 6px); transition: opacity 0.45s ease, transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.pj-shot:hover .pj-arrow, .pj-shot:focus-visible .pj-arrow { opacity: 1; transform: none; }
+
+/* Etiquetas ganham a cor da seção no hover */
+.pj .chips span { transition: border-color 0.4s ease, color 0.4s ease; }
+.pj-shot:hover .chips span, .pj-shot:focus-visible .chips span { border-color: color-mix(in srgb, var(--acc) 45%, transparent); color: var(--acc); }
+
+@media (hover: none) {
+  .pj-arrow { opacity: 1; transform: none; }
+}
