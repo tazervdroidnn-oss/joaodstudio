@@ -49,7 +49,7 @@ export default function Motion() {
 
       // Contador 0 → 45 + desenho do gráfico
       const obj = { n: 0 };
-      ScrollTrigger.create({
+      if (document.querySelector("#numeros")) ScrollTrigger.create({
         trigger: "#numeros", start: "top 65%", once: true,
         onEnter: () => {
           chart?.classList.add("on");

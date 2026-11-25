@@ -119,3 +119,11 @@ feat: posicionamento em três formatos, briefing com diagnóstico, faixas claras
 - 12 capturas novas em public/sites (manso-*, lahatua-*), mesmo padrão: laptop 1280x3022, tablet 820x3200, phone 780x5600, jpg + webp. Seções com preço escondidas e aviso de cookies fechado só na captura (regra: sem preços na Responsive).
 - Capturas antigas valentim-* e nasa-* removidas. Texto do Numbers atualizado.
 - Script de captura (puppeteer-core + Chrome instalado) fica em %TEMP%\jd-capturas\capturar.mjs, fora do projeto.
+
+## 24/11/2026 - feat/briefing: ordem para anúncio no Reels (só local)
+- Ordem: Hero, Projetos, ponte Diagnóstico, Diagnóstico, Processo, Formatos, Responsiva, SEO, ponte Sua vez, CTA. Seção Numbers saiu da página (Numbers.js mantido no projeto); "45+ projetos entregues" virou uma linha no hero. Ponte "No ar" removida.
+- Hero no celular: texto e botões primeiro (os dois botões cabem na 1ª tela de 812 px), retrato menor embaixo, sem os chips flutuantes.
+- Projetos no celular: sem etiquetas, descrição em 2 linhas, miniatura 16:9.
+- Motion.js: contador só é criado se #numeros existir.
+- Celular: 13,9 telas no total; diagnóstico começa na tela 3,9 (antes 7,4).
+- Pendências para o João: nicho do anúncio (pesca/turismo ou geral), depoimentos reais de clientes, ID do Pixel da Meta.

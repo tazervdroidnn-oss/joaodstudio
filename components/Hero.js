@@ -9,7 +9,7 @@ export default function Hero() {
       <div className="orb" style={{ width: 300, height: 300, background: "var(--b2)", top: "40%", left: "55%", opacity: 0.28 }} />
       <div className="wrap relative z-[2]" data-hero>
         <div className="grid items-center gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-6">
-          <div className="order-2 text-center lg:order-1 lg:text-left">
+          <div className="order-1 text-center lg:text-left">
             <span className="hero-i hero-kicker mb-6">Estúdio de presença digital</span>
             <h1 data-hero-title className="hero-i mx-auto max-w-[900px] text-[clamp(34px,5.4vw,64px)] font-extrabold lg:mx-0">
               O site certo para o que o seu negócio precisa <span className="g">vender</span>.
@@ -28,9 +28,10 @@ export default function Hero() {
               </a>
               <a href="#diagnostico" className="btn btn-o">Fazer o diagnóstico grátis</a>
             </div>
+            <p className="hero-i hero-proof"><b>45+</b> projetos entregues <span aria-hidden="true">·</span> sites reais no ar</p>
           </div>
 
-          <div className="order-1 lg:order-2">
+          <div className="order-2">
             <div className="hero-art" data-art>
               <div className="hero-halo" />
               <div className="hero-float">

@@ -572,3 +572,23 @@ body { touch-action: pan-y pinch-zoom; }
   .pr-line { display: none; }
   .bridge { padding-top: 56px; }
 }
+
+/* ============================================================
+   Ordem para o Reels: texto primeiro no celular, prova no hero, projetos compactos
+   ============================================================ */
+.hero-proof { margin-top: 22px; color: var(--mut); font-size: 14px; }
+.hero-proof b { color: var(--tx); font: 800 18px var(--font-sora), sans-serif; }
+@media (max-width: 1023px) {
+  .hero-art { width: min(48vw, 220px); }
+  .hero-chip { display: none; }
+}
+@media (max-width: 767px) {
+  #top { min-height: auto; padding-top: 104px; padding-bottom: 48px; }
+  .hero-formats { margin-bottom: 26px; }
+  .hero-formats li { padding: 7px 12px; font-size: 13px; }
+  #projetos .grid { gap: 18px; }
+  #projetos .chips { display: none; }
+  #projetos .pj-shot > .px-5 { padding: 14px 16px 16px; }
+  #projetos .pj-shot p { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; margin-bottom: 0; }
+  #projetos .scr { aspect-ratio: 16 / 9; }
+}
