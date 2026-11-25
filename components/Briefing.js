@@ -88,15 +88,6 @@ const STRUCTURE = {
   },
 };
 
-// Paleta pela psicologia das cores, por tipo de negócio
-const PALETTES = {
-  servico: { colors: ["#1d4ed8", "#facc15", "#0b1220"], text: "Azul transmite confiança e competência. O amarelo, usado só no botão, chama o olhar para o pedido de orçamento." },
-  loja: { colors: ["#111111", "#c9a24a", "#7f1d3a"], text: "Preto e dourado comunicam valor e exclusividade. O vinho desperta desejo sem parecer promoção." },
-  turismo: { colors: ["#15803d", "#0891b2", "#efe4cf"], text: "Verde e azul lembram natureza, água e descanso. O tom areia traz acolhimento e deixa as fotos respirarem." },
-  criativo: { colors: ["#111111", "#f5f2ea", "#e4572e"], text: "Fundo neutro deixa o seu trabalho ser o protagonista. Uma única cor de assinatura marca a sua identidade." },
-  digital: { colors: ["#6d28d9", "#f97316", "#0f0a1f"], text: "Violeta comunica conhecimento e transformação. O laranja dá energia e urgência ao botão de compra." },
-};
-
 const ATTENTION = {
   insta: "Hoje o cliente decide no direct. A página precisa responder às dúvidas antes da conversa, para o WhatsApp receber pedidos e não perguntas.",
   site: "Quando um site não traz contatos, o problema costuma estar na primeira tela e no caminho até o botão. É por aí que vamos começar.",
@@ -137,7 +128,6 @@ function diagnose(a) {
   return {
     key, format: FORMATS[key],
     structure: s[a.nicho] || s.base,
-    palette: PALETTES[a.nicho],
     attention: ATTENTION[a.hoje],
     cta: ACTION_CTA[a.acao],
     summary: `Você quer que o cliente ${WANT[a.acao]} e vai mostrar ${ITEMS[a.itens]}.`,
@@ -184,7 +174,7 @@ export default function Briefing() {
     `Produtos ou serviços: ${opt("itens", answers.itens).label}`,
     `Hoje: ${opt("hoje", answers.hoje).label}`,
     `Formato indicado: ${result.format.name}`,
-    "Quero conversar sobre o meu site.",
+    `Quero um orçamento de ${result.format.name.toLowerCase()}.`,
   ].join("\n") : "";
 
   return (
@@ -193,7 +183,7 @@ export default function Briefing() {
         <div className="dg-head">
           <span className="kicker rv">Briefing e diagnóstico</span>
           <h2 className="h2" data-split>Descubra o site que o seu negócio <span className="g">precisa</span></h2>
-          <p className="sub rv">Quatro perguntas, menos de um minuto. Você recebe o formato indicado, a estrutura da página, as cores e as palavras-chave para o Google.</p>
+          <p className="sub rv">Quatro perguntas, menos de um minuto. Você descobre qual formato o seu negócio precisa e pede o orçamento direto no WhatsApp.</p>
         </div>
 
         <div className="dg-panel">
@@ -236,17 +226,12 @@ export default function Briefing() {
 
                 <div className="dg-cols">
                   <div className="dg-r dg-box">
-                    <h4>Estrutura da página</h4>
+                    <h4>O que a sua página vai ter</h4>
                     <ol className="dg-list">{result.structure.map((s) => <li key={s}>{s}</li>)}</ol>
                     <p className="dg-cta">{result.cta}</p>
                   </div>
                   <div className="dg-r dg-box">
-                    <h4>Cores que combinam com o seu público</h4>
-                    <div className="dg-swatches" aria-hidden="true">
-                      {result.palette.colors.map((c) => <span key={c} style={{ background: c }} />)}
-                    </div>
-                    <p className="text-mut">{result.palette.text}</p>
-                    <h4 className="mt-5">Primeiro ponto de atenção</h4>
+                    <h4>Primeiro ponto de atenção</h4>
                     <p className="text-mut">{result.attention}</p>
                     <h4 className="mt-5">Palavras-chave para começar no Google</h4>
                     <ul className="dg-kw">{KEYWORDS[answers.nicho].map((w) => <li key={w}>{w}</li>)}</ul>
@@ -261,10 +246,10 @@ export default function Briefing() {
                   <div className="dg-nav">
                     <button type="button" className="dg-back" onClick={restart}>Refazer</button>
                     <a className="btn btn-w" href={waLink(message)} target="_blank" rel="noopener noreferrer">
-                      <WaIcon /> Enviar diagnóstico no WhatsApp
+                      <WaIcon /> Pedir orçamento de {result.format.name.toLowerCase()}
                     </a>
                   </div>
-                  <small className="dg-note">Você revisa a mensagem antes de enviar. Nada é salvo neste site.</small>
+                  <small className="dg-note">Abre o WhatsApp com o seu diagnóstico pronto na mensagem. Você revisa antes de enviar e nada é salvo neste site.</small>
                 </div>
               </div>
             )}

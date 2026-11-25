@@ -127,3 +127,8 @@ feat: posicionamento em três formatos, briefing com diagnóstico, faixas claras
 - Motion.js: contador só é criado se #numeros existir.
 - Celular: 13,9 telas no total; diagnóstico começa na tela 3,9 (antes 7,4).
 - Pendências para o João: nicho do anúncio (pesca/turismo ou geral), depoimentos reais de clientes, ID do Pixel da Meta.
+
+## 24/11/2026 - feat/briefing: diagnóstico sem cores, foco em orçamento (só local)
+- Pedido do João: as cores ele define pela logo e pelo Instagram do cliente. Removida a paleta do resultado do diagnóstico (PALETTES).
+- Resultado: formato indicado + porquê, "O que a sua página vai ter", ponto de atenção e palavras-chave. Botão "Pedir orçamento de <formato>" e mensagem termina com "Quero um orçamento de <formato>."
+- Processo: etapa 2 virou "Roteiro e identidade" (cores tiradas da logo e do Instagram).

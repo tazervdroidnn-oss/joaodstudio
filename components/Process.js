@@ -9,7 +9,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const steps = [
   ["Diagnóstico", "Entendo o seu negócio, o seu público e defino o formato certo."],
-  ["Roteiro e cores", "Ordem das seções, textos que vendem e cores da sua marca."],
+  ["Roteiro e identidade", "Textos que vendem e cores tiradas da sua logo e do seu Instagram."],
   ["Criação", "Pensada para o celular, com animações, SEO e WhatsApp pronto."],
   ["No ar", "Publico, aviso o Google e ajusto os detalhes com você."],
 ];
