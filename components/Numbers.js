@@ -9,7 +9,7 @@ export default function Numbers() {
           </div>
           <h2 data-split className="text-[clamp(24px,4vw,36px)] font-extrabold">projetos entregues</h2>
           <p className="mt-4 max-w-[620px] text-mut">
-            Negócios de turismo, joias, pesca esportiva e tecnologia automotiva já ganharam uma presença digital profissional.
+            Pesca esportiva, pousadas, turismo e joias: negócios reais que já ganharam uma presença digital profissional.
           </p>
           <div className="mt-5 flex flex-wrap gap-8">
             <div className="g font-display text-3xl font-extrabold">100%<span className="block font-sans text-sm font-normal text-mut" style={{ WebkitTextFillColor: "var(--mut)" }}>Responsivos</span></div>

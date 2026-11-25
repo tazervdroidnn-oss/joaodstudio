@@ -18,8 +18,8 @@ ScrollTrigger.config({ ignoreMobileResize: true });
 const SITES = [
   { id: "brasa", tab: "Brasa Fish", short: "Brasa", host: "brasafish.com.br", href: "https://www.brasafish.com.br/", glow: "#f05a25", tabtx: "#ffffff" },
   { id: "meteoro", tab: "Meteoro Joias", short: "Meteoro", host: "meteorojoias.com.br", href: "https://www.meteorojoias.com.br/", glow: "#d4af37", tabtx: "#111111" },
-  { id: "valentim", tab: "Balneário Valentim", short: "Valentim", host: "balneariovalentimm.com.br", href: "https://www.balneariovalentimm.com.br/", glow: "#0fa28a", tabtx: "#ffffff" },
-  { id: "nasa", tab: "Eletricista da NASA", short: "NASA", host: "eletricadanasa.vercel.app", href: "https://eletricadanasa.vercel.app/", glow: "#2b8cff", tabtx: "#ffffff" },
+  { id: "manso", tab: "Mansô Sport Fishing", short: "Mansô", host: "mansosportfishing.vercel.app", href: "https://mansosportfishing.vercel.app/", glow: "#f28a1d", tabtx: "#ffffff" },
+  { id: "lahatua", tab: "Aldeia Lahatua", short: "Lahatua", host: "pousadadalahatua.com.br", href: "https://www.pousadadalahatua.com.br/", glow: "#3f8f66", tabtx: "#ffffff" },
 ];
 
 const DEVICES = [

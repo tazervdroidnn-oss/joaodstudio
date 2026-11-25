@@ -113,3 +113,9 @@ feat: posicionamento em três formatos, briefing com diagnóstico, faixas claras
 - Formatos sem "Para quem/O que tem" (só promessa e público em uma linha). Processo com uma linha por etapa e 2 colunas no celular.
 - Cena fixa da Responsiva encurtada (+=115% celular, +=135% desktop) e subtítulo sem citar os projetos.
 - Espaçamentos menores no celular (seções, pontes, cards).
+
+## 24/11/2026 - feat/briefing: troca de projetos (só local)
+- Balneário Valentim -> Mansô Sport Fishing (mansosportfishing.vercel.app); Eletricista da NASA -> Aldeia Lahatua (pousadadalahatua.com.br). Em Projects.js e nas abas do Responsive.js.
+- 12 capturas novas em public/sites (manso-*, lahatua-*), mesmo padrão: laptop 1280x3022, tablet 820x3200, phone 780x5600, jpg + webp. Seções com preço escondidas e aviso de cookies fechado só na captura (regra: sem preços na Responsive).
+- Capturas antigas valentim-* e nasa-* removidas. Texto do Numbers atualizado.
+- Script de captura (puppeteer-core + Chrome instalado) fica em %TEMP%\jd-capturas\capturar.mjs, fora do projeto.

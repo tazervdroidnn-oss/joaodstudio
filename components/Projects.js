@@ -20,16 +20,16 @@ const projects = [
     chips: ["Vitrine", "Carrinho", "Animação de scroll", "Mapa"],
   },
   {
-    id: "valentim", href: "https://www.balneariovalentimm.com.br/", host: "balneariovalentimm.com.br",
-    title: "Balneário Valentim",
-    desc: "Turismo e natureza no Maranhão, com vídeos, avaliações do Google, mapa e valores.",
-    chips: ["Vídeos", "Avaliações", "Mapa", "FAQ"],
+    id: "manso", href: "https://mansosportfishing.vercel.app/", host: "mansosportfishing.vercel.app",
+    title: "Mansô Sport Fishing",
+    desc: "Pesca esportiva no Rio e no Lago do Manso, com galeria de troféus, pacotes para grupos, mapa com rota e agendamento pelo WhatsApp.",
+    chips: ["Galeria de troféus", "Grupos", "Mapa com rota", "WhatsApp"],
   },
   {
-    id: "nasa", href: "https://eletricadanasa.vercel.app/", host: "eletricadanasa.vercel.app",
-    title: "Eletricista da NASA",
-    desc: "Biblioteca técnica com catálogo por montadora, prévia dos materiais e compra por Pix.",
-    chips: ["Catálogo", "Filtros", "Pix", "Minha biblioteca"],
+    id: "lahatua", href: "https://www.pousadadalahatua.com.br/", host: "pousadadalahatua.com.br",
+    title: "Aldeia Lahatua",
+    desc: "Pesca esportiva no Xingu com experiência indígena, contada em capítulos, com vídeos, galeria e reservas pelo WhatsApp.",
+    chips: ["Narrativa em capítulos", "Vídeos", "Galeria", "Reservas"],
   },
 ];
 
