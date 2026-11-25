@@ -77,3 +77,11 @@ feat: acabamento cinematográfico (letras GSAP, pontes de texto, cores vívidas 
 - public/sites: 12 capturas reais em webp (celular, tablet e laptop de cada projeto).
 - app/globals.css (bloco "Celular em pé", classes .rs-m): palco dimensionado pela altura da tela, texto e trilho na mesma tela, espaço de 104 px embaixo para o botão flutuante do WhatsApp não cobrir a aba NASA, 86 px em cima para o laptop não encostar no cabeçalho.
 - Teste: script com Chrome em modo de teste (C:\Temp\cdp-test.mjs) em 390 px: sem rolagem lateral, etapas 0, 1 e 2 na ordem, abas e trilho funcionando. npm run build passou.
+
+## 24/11/2026 - commit 1df1559 (branch feat/cinematico, só local, ainda sem push)
+feat: seção Projects com entrada cinematográfica e microinterações
+- components/Projects.js virou componente cliente com GSAP próprio: ScrollTrigger.batch com stagger entre cards, timeline por card (card sobe com escala suave, captura revelada por máscara clip-path de cima para baixo enquanto desfaz o zoom, depois barra do navegador, título, descrição e etiquetas em cascata).
+- Hover (só com mouse): inclinação 3D leve (quickTo), luz na cor da seção seguindo o cursor, seta no título, etiquetas na cor da seção. Efeito original de rolar a página na miniatura mantido; no toque continua a rolagem automática.
+- Número 01–04 discreto ao lado do título. Imagens, links, descrições e proporções inalterados. Cards saíram do .rv genérico do Motion.js.
+- app/globals.css: bloco novo no fim com prefixo pj- (nenhuma regra antiga alterada).
+- Respeita prefers-reduced-motion (sem animação). Testado: build OK; desktop 1440 px e celular 375 px sem rolagem lateral e sem erros no console.
