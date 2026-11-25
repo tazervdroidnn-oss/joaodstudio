@@ -38,7 +38,7 @@ export default function Services() {
       <div className="wrap">
         <span className="kicker rv">Formatos</span>
         <h2 className="h2" data-split>Três formatos. Cada um resolve <span className="g">um problema diferente</span>.</h2>
-        <p className="sub rv">O formato certo depende do que o seu cliente precisa fazer quando chega: chamar, confiar ou escolher. Eu indico qual depois de entender o seu negócio.</p>
+        <p className="sub rv">O formato certo depende do que o seu cliente precisa fazer quando chega: chamar, confiar ou escolher.</p>
         <div className="fm-grid grid gap-6 lg:grid-cols-3">
           {formats.map((f) => (
             <article key={f.name} className="fm-card fx-card" style={{ "--fc": f.color }}>
@@ -48,10 +48,7 @@ export default function Services() {
               </div>
               <h3 className="fm-name">{f.name}</h3>
               <p className="fm-lead fx-in">{f.lead}</p>
-              <dl className="fm-dl fx-in">
-                <dt>Para quem</dt><dd>{f.who}</dd>
-                <dt>O que tem</dt><dd>{f.has}</dd>
-              </dl>
+              <p className="fm-who fx-in">{f.who}</p>
               <a className="fm-ex fx-in" href={f.ex.href} {...(f.ex.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}>
                 Exemplo no ar: {f.ex.label} <span aria-hidden="true">↗</span>
               </a>

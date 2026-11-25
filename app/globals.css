@@ -546,3 +546,29 @@ body { touch-action: pan-y pinch-zoom; }
 .seo-kw li::before, .dg-kw li::before { content: ""; width: 11px; height: 11px; flex: none; border: 1.6px solid var(--mut); border-radius: 50%; box-shadow: 4px 4px 0 -3px var(--mut); }
 .seo-kw-note { margin-top: 14px; color: var(--mut); font-size: 14px; }
 @media (prefers-reduced-motion: reduce) { .seo-res { opacity: 1; transform: none; } }
+
+/* ============================================================
+   Versão enxuta (para tráfego do Instagram)
+   ============================================================ */
+.seo-top { margin: 36px 0 0; }
+.seo-explain > p:first-child { margin-bottom: 18px; color: var(--mut); }
+.seo-list { display: grid; gap: 14px; margin: 0 0 20px; padding: 0; list-style: none; }
+.seo-list li { display: grid; gap: 2px; padding-left: 26px; position: relative; }
+.seo-list li::before { content: ""; position: absolute; left: 0; top: 7px; width: 12px; height: 12px; border-radius: 50%; border: 2px solid var(--acc); }
+.seo-list b { color: var(--tx); font-weight: 700; }
+.seo-list span { color: var(--mut); font-size: 14.5px; }
+.fm-who { margin-bottom: 20px; color: var(--mut); font-size: 14px; }
+@media (max-width: 767px) {
+  .sec { padding-top: 64px; padding-bottom: 64px; }
+  .sub { margin-bottom: 36px; }
+  .seo-ghost { display: none; }
+  .seo-mock { padding: 16px; }
+  .fm-card { padding: 24px 22px 20px; }
+  .fm-top { margin-bottom: 14px; }
+  .pr-step { padding: 18px 16px; }
+  .pr-n { font-size: 30px; }
+  .pr-step h3 { font-size: 16px; }
+  .pr-step p { font-size: 13.5px; }
+  .pr-line { display: none; }
+  .bridge { padding-top: 56px; }
+}

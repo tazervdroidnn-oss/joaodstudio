@@ -105,3 +105,11 @@ feat: posicionamento em três formatos, briefing com diagnóstico, faixas claras
 - Processo cita SEO e o aviso ao Google na publicação. Pontes renumeradas (05 Google, 06 Diagnóstico, 07 Como, 08 Sua vez).
 - SEO do próprio site: palavras-chave e canonical no layout.js, dados estruturados schema.org (ProfessionalService), app/robots.js e app/sitemap.js.
 - Exemplos com cidades do Maranhão (Imperatriz, São Luís): trocar se o João preferir outra região.
+
+## 24/11/2026 - feat/briefing: versão enxuta para anúncio no Instagram (só local)
+- Pedido do João: enxugar o site. Celular: de 24,9 para 15,8 telas e de 1.641 para 958 palavras. Diagnóstico passou da tela ~16 para a tela 7,4.
+- Nova ordem: Hero, Números, ponte "No ar", Projetos, Formatos, ponte "Diagnóstico", Diagnóstico, Responsiva, SEO, Processo, ponte "Sua vez", CTA. Pontes de 8 para 3.
+- SEO reduzido a uma tela (pesquisa simulada + 3 pontos + aviso de médio prazo); lista de palavras-chave saiu da página (continua no resultado do diagnóstico).
+- Formatos sem "Para quem/O que tem" (só promessa e público em uma linha). Processo com uma linha por etapa e 2 colunas no celular.
+- Cena fixa da Responsiva encurtada (+=115% celular, +=135% desktop) e subtítulo sem citar os projetos.
+- Espaçamentos menores no celular (seções, pontes, cards).

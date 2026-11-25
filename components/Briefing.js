@@ -193,7 +193,7 @@ export default function Briefing() {
         <div className="dg-head">
           <span className="kicker rv">Briefing e diagnóstico</span>
           <h2 className="h2" data-split>Descubra o site que o seu negócio <span className="g">precisa</span></h2>
-          <p className="sub rv">Quatro perguntas, menos de um minuto. No fim você vê o formato indicado, a estrutura da página, as cores que combinam com o seu público e o primeiro ponto a resolver.</p>
+          <p className="sub rv">Quatro perguntas, menos de um minuto. Você recebe o formato indicado, a estrutura da página, as cores e as palavras-chave para o Google.</p>
         </div>
 
         <div className="dg-panel">

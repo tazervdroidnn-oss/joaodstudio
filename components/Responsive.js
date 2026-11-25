@@ -114,7 +114,7 @@ function buildScene(el, { mobile, jump }) {
       setFill(gsap.utils.clamp(0, 1, (t - lb.s0) / (lb.s2 - lb.s0)));
     },
     scrollTrigger: {
-      trigger: q(".rs-pin"), start: "top top", end: mobile ? "+=210%" : "+=240%",
+      trigger: q(".rs-pin"), start: "top top", end: mobile ? "+=115%" : "+=135%",
       pin: true, scrub: mobile ? 0.8 : 0.6, anticipatePin: 1, invalidateOnRefresh: true,
     },
   });
@@ -233,8 +233,7 @@ export default function Responsive() {
           <span className="rs-pill rv">Responsividade de verdade</span>
           <h2 className="h2 rv">Uma página. <span className="g">Todas as telas.</span></h2>
           <p className="sub rv" style={{ marginBottom: 0 }}>
-            Você acabou de ver os projetos no ar. Agora veja os mesmos sites em três tamanhos de tela: cada página nasce pensada para o
-            celular, ganha espaço no tablet e se recompõe no notebook, sem perder a identidade da marca.
+            Os mesmos sites em três telas: pensados primeiro para o celular, ajustados no tablet e completos no notebook.
           </p>
         </div>
 

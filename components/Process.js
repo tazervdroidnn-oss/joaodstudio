@@ -8,10 +8,10 @@ import { use3D } from "./use3D";
 gsap.registerPlugin(ScrollTrigger);
 
 const steps = [
-  ["Diagnóstico", "Você responde o briefing e eu analiso o seu negócio, o seu público e quem disputa o mesmo cliente. Saio com o formato certo e o objetivo da página."],
-  ["Roteiro e cores", "Defino a ordem das seções, os textos que respondem às dúvidas do cliente e a paleta pela psicologia das cores da sua marca."],
-  ["Design e desenvolvimento", "Construo começando pelo celular, com animações cinematográficas, SEO, carregamento rápido e WhatsApp com mensagem pronta."],
-  ["No ar e ajustes", "Publico, aviso o Google que a página existe, testo no celular, no tablet e no computador e ajusto os detalhes com você."],
+  ["Diagnóstico", "Entendo o seu negócio, o seu público e defino o formato certo."],
+  ["Roteiro e cores", "Ordem das seções, textos que vendem e cores da sua marca."],
+  ["Criação", "Pensada para o celular, com animações, SEO e WhatsApp pronto."],
+  ["No ar", "Publico, aviso o Google e ajusto os detalhes com você."],
 ];
 
 export default function Process() {
@@ -36,8 +36,8 @@ export default function Process() {
       <div className="wrap">
         <span className="kicker rv">Processo</span>
         <h2 className="h2" data-split>Do diagnóstico à página <span className="g">no ar</span></h2>
-        <p className="sub rv">Quatro etapas claras. Você sabe o que está acontecendo em cada uma e aprova antes de seguir.</p>
-        <div className="pr-grid relative grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <p className="sub rv">Quatro etapas. Você aprova cada uma antes de seguir.</p>
+        <div className="pr-grid relative grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-4">
           <div className="pr-line" aria-hidden="true"><i /></div>
           {steps.map(([t, d], i) => (
             <div key={t} className="pr-step fx-card">

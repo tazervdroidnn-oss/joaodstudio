@@ -12,12 +12,9 @@ const SEARCHES = [
 ];
 
 const STEPS = [
-  ["Palavras que o seu cliente usa", "Descubro como as pessoas pesquisam o que você vende e coloco essas palavras nos títulos e nos textos da página."],
-  ["Título e resumo que geram clique", "Escrevo o título azul e a descrição que aparecem no Google, pensados para a pessoa escolher o seu site entre os outros."],
-  ["Busca local", "Cidade, bairro e região atendida aparecem no site, e eu oriento a ligação com o Perfil da Empresa no Google, o que aparece no Maps."],
-  ["Rápido no celular", "O Google dá preferência a páginas leves, que abrem rápido e funcionam bem no celular. Toda página já nasce assim."],
-  ["Código que o Google entende", "Títulos em ordem, imagens com descrição e os dados da empresa marcados no código, para o Google saber quem você é e onde atende."],
-  ["Prévia bonita ao compartilhar", "Quando o link é enviado no WhatsApp ou no Instagram, aparece com foto, título e descrição, e não um endereço solto."],
+  ["As palavras que o seu cliente pesquisa", "nos títulos e nos textos da página"],
+  ["Título e resumo que geram clique", "o texto azul e a descrição que aparecem no Google"],
+  ["Rápido no celular e na sua cidade", "página leve e região atendida, pronta para o Google Maps"],
 ];
 
 export const KEYWORDS = {
@@ -28,10 +25,6 @@ export const KEYWORDS = {
   digital: ["curso de elétrica automotiva", "diagrama elétrico de carro pdf", "apostila de injeção eletrônica", "curso online com certificado"],
 };
 
-const GROUPS = [
-  ["Serviços", "servico"], ["Lojas e vitrines", "loja"], ["Turismo", "turismo"], ["Criativos", "criativo"], ["Produtos digitais", "digital"],
-];
-
 export default function Seo() {
   const root = useRef(null);
   const mock = useRef(null);
@@ -40,7 +33,6 @@ export default function Seo() {
   const [show, setShow] = useState(true);
 
   use3D(root, ".seo-mock", { rotationX: 32, z: -240, y: 90, origin: "50% 100%", tilt: false });
-  use3D(root, ".seo-step", { rotationX: 48, y: 60, stagger: 0.1 });
 
   // Digita a pesquisa, mostra o resultado e passa para a próxima (só enquanto está na tela)
   useEffect(() => {
@@ -74,8 +66,6 @@ export default function Seo() {
       <div className="wrap">
         <span className="kicker rv">SEO · Google</span>
         <h2 className="h2" data-split>Seu cliente pesquisa no Google. Seu site precisa <span className="g">aparecer</span>.</h2>
-        <p className="sub rv">SEO são os ajustes que ajudam o Google a entender o que você faz e onde você atende, para o seu site aparecer quando alguém procura por isso. Toda página que eu entrego já sai com essa base pronta.</p>
-
         <div className="seo-top">
           <div className="seo-mock" ref={mock} aria-hidden="true">
             <div className="seo-search">
@@ -91,33 +81,12 @@ export default function Seo() {
           </div>
 
           <div className="seo-explain rv">
-            <h3>Como funciona, em palavras simples</h3>
-            <p>Quando alguém digita uma pesquisa, o Google procura as páginas que melhor respondem àquela frase. Se o seu site usa as mesmas palavras que o seu cliente, carrega rápido e mostra onde você atende, ele tem mais chance de aparecer.</p>
-            <p><b>Palavra-chave</b> é a frase que a pessoa digita. As curtas, como &quot;joias&quot;, têm muita concorrência. As específicas, com cidade ou detalhe, como &quot;joias banhadas a ouro em Imperatriz&quot;, trazem quem já está pronto para comprar.</p>
-            <p className="seo-honest">SEO é trabalho de médio prazo: o Google leva algumas semanas para conhecer e posicionar uma página nova. Por isso ela já nasce preparada.</p>
+            <p>SEO são os ajustes que ajudam o Google a mostrar o seu site para quem procura o que você vende. Toda página que eu entrego já sai com essa base:</p>
+            <ul className="seo-list">
+              {STEPS.map(([t, d]) => <li key={t}><b>{t}</b><span>{d}</span></li>)}
+            </ul>
+            <p className="seo-honest">É trabalho de médio prazo: o Google leva algumas semanas para conhecer uma página nova. No diagnóstico você já recebe as palavras-chave para começar.</p>
           </div>
-        </div>
-
-        <h3 className="seo-h3 rv">O que eu faço em cada página</h3>
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {STEPS.map(([t, d], n) => (
-            <div key={t} className="seo-step fx-card">
-              <span className="seo-n">{String(n + 1).padStart(2, "0")}</span>
-              <h4>{t}</h4>
-              <p className="fx-in">{d}</p>
-            </div>
-          ))}
-        </div>
-
-        <h3 className="seo-h3 rv">Exemplos de palavras-chave por tipo de negócio</h3>
-        <div className="seo-kw rv">
-          {GROUPS.map(([label, k]) => (
-            <div key={k} className="seo-kw-row">
-              <span className="seo-kw-label">{label}</span>
-              <ul>{KEYWORDS[k].map((w) => <li key={w}>{w}</li>)}</ul>
-            </div>
-          ))}
-          <p className="seo-kw-note">No diagnóstico eu levanto as palavras certas para o seu negócio e a sua cidade.</p>
         </div>
       </div>
     </section>
